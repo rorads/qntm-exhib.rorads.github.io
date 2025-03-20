@@ -211,22 +211,77 @@
     <path d="M0,0 L1920,1080" stroke="#a2aaff">
       <animate attributeName="stroke-opacity" values="0.25;0.2;0.3;0.25" dur="10s" repeatCount="indefinite" />
       <animate attributeName="stroke-width" values="1;1.2;0.9;1" dur="15s" repeatCount="indefinite" />
+      <animate 
+        attributeName="d" 
+        dur="30s"
+        repeatCount="indefinite"
+        values="M0,0 L1920,1080;
+                M30,-10 L1900,1100;
+                M-20,20 L1940,1060;
+                M0,0 L1920,1080"
+        calcMode="spline"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+      />
     </path>
     <path d="M1920,0 L0,1080" stroke="#e0b8c0">
       <animate attributeName="stroke-opacity" values="0.25;0.3;0.2;0.25" dur="12s" repeatCount="indefinite" />
       <animate attributeName="stroke-width" values="1;0.9;1.2;1" dur="18s" repeatCount="indefinite" />
+      <animate 
+        attributeName="d" 
+        dur="35s"
+        repeatCount="indefinite"
+        values="M1920,0 L0,1080;
+                M1900,20 L20,1060;
+                M1940,-10 L-20,1100;
+                M1920,0 L0,1080"
+        calcMode="spline"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+      />
     </path>
     <path d="M960,0 L1920,540 L960,1080 L0,540 Z" stroke="#c0e8d0">
       <animate attributeName="stroke-opacity" values="0.25;0.2;0.3;0.25" dur="20s" repeatCount="indefinite" />
       <animate attributeName="stroke-width" values="1;1.1;0.9;1" dur="15s" repeatCount="indefinite" />
+      <animate 
+        attributeName="d" 
+        dur="40s"
+        repeatCount="indefinite"
+        values="M960,0 L1920,540 L960,1080 L0,540 Z;
+                M960,20 L1940,540 L960,1060 L-20,540 Z;
+                M960,-20 L1900,540 L960,1100 L20,540 Z;
+                M960,0 L1920,540 L960,1080 L0,540 Z"
+        calcMode="spline"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+      />
     </path>
     <path d="M480,0 L0,540 L480,1080 L960,540 Z" stroke="#b1baf5">
       <animate attributeName="stroke-opacity" values="0.25;0.3;0.2;0.25" dur="18s" repeatCount="indefinite" />
       <animate attributeName="stroke-width" values="1;0.9;1.1;1" dur="12s" repeatCount="indefinite" />
+      <animate 
+        attributeName="d" 
+        dur="32s"
+        repeatCount="indefinite"
+        values="M480,0 L0,540 L480,1080 L960,540 Z;
+                M460,10 L-20,530 L460,1070 L940,530 Z;
+                M500,-10 L20,550 L500,1090 L980,550 Z;
+                M480,0 L0,540 L480,1080 L960,540 Z"
+        calcMode="spline"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+      />
     </path>
     <path d="M1440,0 L1920,540 L1440,1080 L960,540 Z" stroke="#ffc2d1">
       <animate attributeName="stroke-opacity" values="0.25;0.2;0.3;0.25" dur="15s" repeatCount="indefinite" />
       <animate attributeName="stroke-width" values="1;1.2;0.9;1" dur="20s" repeatCount="indefinite" />
+      <animate 
+        attributeName="d" 
+        dur="38s"
+        repeatCount="indefinite"
+        values="M1440,0 L1920,540 L1440,1080 L960,540 Z;
+                M1460,10 L1940,530 L1460,1070 L980,530 Z;
+                M1420,-10 L1900,550 L1420,1090 L940,550 Z;
+                M1440,0 L1920,540 L1440,1080 L960,540 Z"
+        calcMode="spline"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+      />
     </path>
   </g>
 </svg> 
