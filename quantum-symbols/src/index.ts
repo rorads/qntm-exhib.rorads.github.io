@@ -1,14 +1,6 @@
 import './styles.css';
 import { QuantumSymbol, ModalOptions } from './types';
 
-// Audio management variables
-let audioContext: AudioContext | null = null;
-let forwardBuffer: AudioBuffer | null = null;
-let reverseBuffer: AudioBuffer | null = null;
-let audioSource: AudioBufferSourceNode | null = null;
-let isPlayingForward: boolean = true;
-let isMuted: boolean = true; // Start muted
-
 // Quantum symbol definitions
 const quantumSymbols: QuantumSymbol[] = [
   {
@@ -145,167 +137,6 @@ function closeModal() {
   document.body.classList.remove('modal-open');
 }
 
-// Audio functions
-async function initializeAudio() {
-  try {
-    console.log("Initializing audio...");
-    audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    console.log("AudioContext created, state:", audioContext.state);
-    
-    console.log("Fetching audio file...");
-    // Use a more reliable path - check if this matches your actual file location
-    const response = await fetch('./assets/fm_synth_quantum.wav');
-    if (!response.ok) {
-      throw new Error(`Failed to fetch audio: ${response.status} ${response.statusText}`);
-    }
-    
-    const arrayBuffer = await response.arrayBuffer();
-    console.log("Audio file fetched, size:", arrayBuffer.byteLength, "bytes");
-    
-    try {
-      // Create forward buffer
-      console.log("ArrayBuffer size:", arrayBuffer.byteLength);
-      forwardBuffer = await audioContext.decodeAudioData(arrayBuffer.slice(0));
-      console.log("Forward buffer created successfully");
-      
-      // Create reversed buffer
-      reverseBuffer = audioContext.createBuffer(
-        forwardBuffer.numberOfChannels,
-        forwardBuffer.length,
-        forwardBuffer.sampleRate
-      );
-      
-      // Reverse the audio data
-      for (let channel = 0; channel < forwardBuffer.numberOfChannels; channel++) {
-        const forward = forwardBuffer.getChannelData(channel);
-        const reversed = reverseBuffer.getChannelData(channel);
-        for (let i = 0; i < forward.length; i++) {
-          reversed[i] = forward[forward.length - 1 - i];
-        }
-      }
-      
-      console.log("Audio initialization complete");
-      updateMuteButtonState(); // Update button to show audio is available
-    } catch (decodeError) {
-      console.error("Failed to decode audio:", decodeError);
-      showAudioError();
-    }
-  } catch (error) {
-    console.error("Failed to initialize audio:", error);
-    showAudioError();
-  }
-}
-
-function showAudioError() {
-  const muteButton = document.getElementById('mute-button');
-  if (muteButton) {
-    muteButton.innerHTML = '🔇 Audio Error';
-    muteButton.classList.add('audio-error');
-    muteButton.title = 'Audio file could not be loaded';
-    (muteButton as HTMLButtonElement).disabled = true;
-  }
-}
-
-function updateMuteButtonState() {
-  const muteButton = document.getElementById('mute-button');
-  if (!muteButton) return;
-  
-  if (isMuted) {
-    muteButton.innerHTML = '🔊 Play Audio';
-    muteButton.classList.add('muted');
-    muteButton.classList.remove('playing');
-  } else {
-    muteButton.innerHTML = '🔇 Mute Audio';
-    muteButton.classList.remove('muted');
-    muteButton.classList.add('playing');
-  }
-}
-
-function playAudioInBouncingLoop() {
-  if (!audioContext) {
-    console.error("AudioContext not initialized");
-    return;
-  }
-  
-  if (!forwardBuffer || !reverseBuffer) {
-    console.error("Audio buffers not loaded");
-    return;
-  }
-  
-  if (isMuted) {
-    console.log("Audio is muted, not playing");
-    return;
-  }
-  
-  console.log("Playing audio in " + (isPlayingForward ? "forward" : "reverse") + " direction");
-  
-  // If already playing, stop the current source
-  if (audioSource) {
-    audioSource.stop();
-    audioSource = null;
-  }
-  
-  // Create a new source
-  audioSource = audioContext.createBufferSource();
-  audioSource.buffer = isPlayingForward ? forwardBuffer : reverseBuffer;
-  audioSource.connect(audioContext.destination);
-  
-  // When finished, toggle direction and play again
-  audioSource.onended = () => {
-    isPlayingForward = !isPlayingForward;
-    playAudioInBouncingLoop();
-  };
-  
-  audioSource.start();
-}
-
-function toggleMute() {
-  // First check if audio is properly initialized
-  if (!audioContext || !forwardBuffer || !reverseBuffer) {
-    console.error("Cannot toggle audio - not properly initialized");
-    initializeAudio(); // Try to initialize again
-    return;
-  }
-  
-  isMuted = !isMuted;
-  updateMuteButtonState();
-  
-  if (isMuted) {
-    if (audioSource) {
-      audioSource.stop();
-      audioSource = null;
-    }
-    console.log("Audio muted");
-  } else {
-    console.log("Attempting to unmute and play audio");
-    // Resume audio context if it was suspended (autoplay policy)
-    if (audioContext.state === 'suspended') {
-      audioContext.resume().then(() => {
-        console.log("AudioContext resumed");
-        playAudioInBouncingLoop();
-      });
-    } else {
-      playAudioInBouncingLoop();
-    }
-  }
-}
-
-function createMuteButton() {
-  const muteButton = document.createElement('button');
-  muteButton.id = 'mute-button';
-  muteButton.className = 'mute-button muted';
-  muteButton.innerHTML = '🔊 Play Audio';
-  muteButton.title = 'Click to play audio';
-  
-  muteButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    toggleMute();
-  });
-  
-  document.body.appendChild(muteButton);
-  console.log("Mute button created");
-}
-
 // Event listeners
 if (closeButton) {
   closeButton.addEventListener('click', closeModal);
@@ -327,8 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   createSymbols();
   animateSymbols();
-  createMuteButton(); // Add mute button
-  initializeAudio();  // Initialize audio
   
   // Add this for debugging
   console.log("Quantum Symbols initialized");
