@@ -101,6 +101,7 @@ body.modal-open {
 
 #modal-body {
   line-height: 1.6;
+  white-space: pre-wrap; /* This makes the text respect newlines */
 }
 
 /* Responsive design */
