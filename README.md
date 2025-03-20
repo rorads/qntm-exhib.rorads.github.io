@@ -11,28 +11,26 @@ The Quantum Symbols project is a minimal and visually striking single-page appli
 
 ## Project Structure
 The project is organized as follows:
-
 ```
-quantum-symbols
 ├── src
-│   ├── index.ts          # Main entry point of the application
-│   ├── styles.css        # Styles for the application
-│   ├── types.ts          # TypeScript interfaces and types
-│   └── assets
-│       └── background.svg # Background graphic for the application
+│ ├── index.ts # Main entry point of the application
+│ ├── styles.css # Styles for the application
+│ ├── types.ts # TypeScript interfaces and types
+│ └── assets
+│ └── background.svg # Background graphic for the application
 ├── public
-│   └── index.html        # Main HTML file for the application
-├── package.json          # npm configuration file
-├── tsconfig.json         # TypeScript configuration file
-├── .gitignore            # Files and directories to ignore by Git
-└── README.md             # Documentation for the project
+│ └── index.html # Main HTML file for the application
+├── package.json # npm configuration file
+├── tsconfig.json # TypeScript configuration file
+├── .gitignore # Files and directories to ignore by Git
+└── README.md # Documentation for the project
 ```
 
 ## Setup Instructions
 1. Clone the repository:
    ```
-   git clone <repository-url>
-   cd quantum-symbols
+   git clone https://github.com/rorads/qntm-exhib.rorads.github.io.git
+   cd qntm-exhib.rorads.github.io
    ```
 
 2. Install dependencies:
@@ -47,10 +45,12 @@ quantum-symbols
 
 4. Serve the application:
    ```
-   npm start
+   npx serve -s dist -l 3005
    ```
 
-5. Open your browser and navigate to `http://localhost:3000` to view the application.
+5. Open your browser and navigate to `http://localhost:3005` to view the application.
+
+The application is deployed and can be accessed at: https://rorads.github.io/qntm-exhib.rorads.github.io/dist/
 
 ## Usage
 - Click on any of the floating symbols to open a modal that displays relevant content.

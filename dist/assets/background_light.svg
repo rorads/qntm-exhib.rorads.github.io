@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fafbff" />
+      <stop offset="100%" stop-color="#f0f3fc" />
+    </linearGradient>
+    
+    <!-- Added gradients between colors -->
+    <linearGradient id="blue-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b8c2ff" />
+      <stop offset="100%" stop-color="#b5e8d0" />
+    </linearGradient>
+    
+    <linearGradient id="green-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b5e8d0" />
+      <stop offset="100%" stop-color="#ffc2d1" />
+    </linearGradient>
+    
+    <linearGradient id="pink-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffc2d1" />
+      <stop offset="100%" stop-color="#c9c0ff" />
+    </linearGradient>
+    
+    <linearGradient id="purple-mint" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9c0ff" />
+      <stop offset="100%" stop-color="#c0f0d9" />
+    </linearGradient>
+    
+    <filter id="soft-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Reduced blur for sharper nodes -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+  
+  <!-- Horizontal grid lines with variation and more colors -->
+  <g stroke-width="1.2" stroke-opacity="0.45" fill="none">
+    <path d="M0,100 C320,110 640,90 960,100 S1600,105 1920,95" stroke="url(#blue-green)" />
+    <path d="M0,200 C320,190 640,205 960,195 S1600,210 1920,205" stroke="#b5e8d0" />
+    <path d="M0,300 C320,310 640,295 960,305 S1600,290 1920,300" stroke="url(#green-pink)" />
+    <path d="M0,400 C320,390 640,410 960,395 S1600,405 1920,395" stroke="#ffc2d1" />
+    <path d="M0,500 C320,510 640,490 960,500 S1600,505 1920,495" stroke="url(#pink-purple)" />
+    <path d="M0,600 C320,590 640,605 960,595 S1600,610 1920,605" stroke="#c9c0ff" />
+    <path d="M0,700 C320,710 640,695 960,705 S1600,690 1920,700" stroke="url(#purple-mint)" />
+    <path d="M0,800 C320,790 640,810 960,795 S1600,805 1920,795" stroke="#c0f0d9" />
+    <path d="M0,900 C320,910 640,890 960,900 S1600,905 1920,895" stroke="#c7d1ff" />
+    <path d="M0,1000 C320,990 640,1005 960,995 S1600,1010 1920,1005" stroke="#ffd0c2" />
+  </g>
+  
+  <!-- Vertical grid lines with variation and more colors -->
+  <g stroke-width="1.2" stroke-opacity="0.45" fill="none">
+    <path d="M100,0 C110,180 90,360 100,540 S105,900 95,1080" stroke="#bdc7ff" />
+    <path d="M300,0 C290,180 305,360 295,540 S310,900 305,1080" stroke="#c2e8d0" />
+    <path d="M500,0 C510,180 495,360 505,540 S490,900 500,1080" stroke="#cad2fc" />
+    <path d="M700,0 C690,180 710,360 695,540 S705,900 695,1080" stroke="#fcd0c2" />
+    <path d="M900,0 C910,180 890,360 900,540 S905,900 895,1080" stroke="#cfd7ff" />
+    <path d="M1100,0 C1090,180 1105,360 1095,540 S1110,900 1105,1080" stroke="#c4e6d4" />
+    <path d="M1300,0 C1310,180 1295,360 1305,540 S1290,900 1300,1080" stroke="#ccd4ff" />
+    <path d="M1500,0 C1490,180 1510,360 1495,540 S1505,900 1495,1080" stroke="#ffcad8" />
+    <path d="M1700,0 C1710,180 1690,360 1700,540 S1705,900 1695,1080" stroke="#c9d1ff" />
+    <path d="M1900,0 C1890,180 1905,360 1895,540 S1910,900 1905,1080" stroke="#d0f4e0" />
+  </g>
+  
+  <!-- More regularly distributed nodes, smaller and less blurred -->
+  <g fill-opacity="0.65" filter="url(#soft-blur)">
+    <!-- Row 1 - regular distribution with varied colors -->
+    <circle cx="150" cy="120" r="4" fill="#b1bcff" />
+    <circle cx="300" cy="120" r="4" fill="#b3e0c8" />
+    <circle cx="450" cy="120" r="4" fill="#ffb8ca" />
+    <circle cx="600" cy="120" r="4" fill="#c2c9ff" />
+    <circle cx="750" cy="120" r="4" fill="#b8e5cf" />
+    <circle cx="900" cy="120" r="4" fill="#ffc0ce" />
+    <circle cx="1050" cy="120" r="4" fill="#c5ccff" />
+    <circle cx="1200" cy="120" r="4" fill="#bde9d5" />
+    <circle cx="1350" cy="120" r="4" fill="#ffc8d2" />
+    <circle cx="1500" cy="120" r="4" fill="#c8cfff" />
+    <circle cx="1650" cy="120" r="4" fill="#c1edd9" />
+    <circle cx="1800" cy="120" r="4" fill="#ffd0da" />
+    
+    <!-- Row 2 -->
+    <circle cx="150" cy="240" r="4" fill="#c2edd9" />
+    <circle cx="300" cy="240" r="4" fill="#ffd0da" />
+    <circle cx="450" cy="240" r="4" fill="#c8cfff" />
+    <circle cx="600" cy="240" r="4" fill="#bde9d5" />
+    <circle cx="750" cy="240" r="4" fill="#ffc8d2" />
+    <circle cx="900" cy="240" r="4" fill="#c5ccff" />
+    <circle cx="1050" cy="240" r="4" fill="#b8e5cf" />
+    <circle cx="1200" cy="240" r="4" fill="#ffc0ce" />
+    <circle cx="1350" cy="240" r="4" fill="#c2c9ff" />
+    <circle cx="1500" cy="240" r="4" fill="#b3e0c8" />
+    <circle cx="1650" cy="240" r="4" fill="#ffb8ca" />
+    <circle cx="1800" cy="240" r="4" fill="#b1bcff" />
+    
+    <!-- Row 3 -->
+    <circle cx="150" cy="360" r="4" fill="#ffc8d2" />
+    <circle cx="300" cy="360" r="4" fill="#c5ccff" />
+    <circle cx="450" cy="360" r="4" fill="#b8e5cf" />
+    <circle cx="600" cy="360" r="4" fill="#ffc0ce" />
+    <circle cx="750" cy="360" r="4" fill="#c2c9ff" />
+    <circle cx="900" cy="360" r="4" fill="#b3e0c8" />
+    <circle cx="1050" cy="360" r="4" fill="#ffb8ca" />
+    <circle cx="1200" cy="360" r="4" fill="#b1bcff" />
+    <circle cx="1350" cy="360" r="4" fill="#c2edd9" />
+    <circle cx="1500" cy="360" r="4" fill="#ffd0da" />
+    <circle cx="1650" cy="360" r="4" fill="#c8cfff" />
+    <circle cx="1800" cy="360" r="4" fill="#bde9d5" />
+    
+    <!-- Row 4 -->
+    <circle cx="150" cy="480" r="4" fill="#b3e0c8" />
+    <circle cx="300" cy="480" r="4" fill="#ffb8ca" />
+    <circle cx="450" cy="480" r="4" fill="#b1bcff" />
+    <circle cx="600" cy="480" r="4" fill="#c2edd9" />
+    <circle cx="750" cy="480" r="4" fill="#ffd0da" />
+    <circle cx="900" cy="480" r="4" fill="#c8cfff" />
+    <circle cx="1050" cy="480" r="4" fill="#bde9d5" />
+    <circle cx="1200" cy="480" r="4" fill="#ffc8d2" />
+    <circle cx="1350" cy="480" r="4" fill="#c5ccff" />
+    <circle cx="1500" cy="480" r="4" fill="#b8e5cf" />
+    <circle cx="1650" cy="480" r="4" fill="#ffc0ce" />
+    <circle cx="1800" cy="480" r="4" fill="#c2c9ff" />
+    
+    <!-- Row 5 -->
+    <circle cx="150" cy="600" r="4" fill="#ffd0da" />
+    <circle cx="300" cy="600" r="4" fill="#c8cfff" />
+    <circle cx="450" cy="600" r="4" fill="#bde9d5" />
+    <circle cx="600" cy="600" r="4" fill="#ffc8d2" />
+    <circle cx="750" cy="600" r="4" fill="#c5ccff" />
+    <circle cx="900" cy="600" r="4" fill="#b8e5cf" />
+    <circle cx="1050" cy="600" r="4" fill="#ffc0ce" />
+    <circle cx="1200" cy="600" r="4" fill="#c2c9ff" />
+    <circle cx="1350" cy="600" r="4" fill="#b3e0c8" />
+    <circle cx="1500" cy="600" r="4" fill="#ffb8ca" />
+    <circle cx="1650" cy="600" r="4" fill="#b1bcff" />
+    <circle cx="1800" cy="600" r="4" fill="#c2edd9" />
+    
+    <!-- Row 6 -->
+    <circle cx="150" cy="720" r="4" fill="#c5ccff" />
+    <circle cx="300" cy="720" r="4" fill="#b8e5cf" />
+    <circle cx="450" cy="720" r="4" fill="#ffc0ce" />
+    <circle cx="600" cy="720" r="4" fill="#c2c9ff" />
+    <circle cx="750" cy="720" r="4" fill="#b3e0c8" />
+    <circle cx="900" cy="720" r="4" fill="#ffb8ca" />
+    <circle cx="1050" cy="720" r="4" fill="#b1bcff" />
+    <circle cx="1200" cy="720" r="4" fill="#c2edd9" />
+    <circle cx="1350" cy="720" r="4" fill="#ffd0da" />
+    <circle cx="1500" cy="720" r="4" fill="#c8cfff" />
+    <circle cx="1650" cy="720" r="4" fill="#bde9d5" />
+    <circle cx="1800" cy="720" r="4" fill="#ffc8d2" />
+    
+    <!-- Row 7 -->
+    <circle cx="150" cy="840" r="4" fill="#b8e5cf" />
+    <circle cx="300" cy="840" r="4" fill="#ffc0ce" />
+    <circle cx="450" cy="840" r="4" fill="#c2c9ff" />
+    <circle cx="600" cy="840" r="4" fill="#b3e0c8" />
+    <circle cx="750" cy="840" r="4" fill="#ffb8ca" />
+    <circle cx="900" cy="840" r="4" fill="#b1bcff" />
+    <circle cx="1050" cy="840" r="4" fill="#c2edd9" />
+    <circle cx="1200" cy="840" r="4" fill="#ffd0da" />
+    <circle cx="1350" cy="840" r="4" fill="#c8cfff" />
+    <circle cx="1500" cy="840" r="4" fill="#bde9d5" />
+    <circle cx="1650" cy="840" r="4" fill="#ffc8d2" />
+    <circle cx="1800" cy="840" r="4" fill="#c5ccff" />
+    
+    <!-- Row 8 -->
+    <circle cx="150" cy="960" r="4" fill="#ffc0ce" />
+    <circle cx="300" cy="960" r="4" fill="#c2c9ff" />
+    <circle cx="450" cy="960" r="4" fill="#b3e0c8" />
+    <circle cx="600" cy="960" r="4" fill="#ffb8ca" />
+    <circle cx="750" cy="960" r="4" fill="#b1bcff" />
+    <circle cx="900" cy="960" r="4" fill="#c2edd9" />
+    <circle cx="1050" cy="960" r="4" fill="#ffd0da" />
+    <circle cx="1200" cy="960" r="4" fill="#c8cfff" />
+    <circle cx="1350" cy="960" r="4" fill="#bde9d5" />
+    <circle cx="1500" cy="960" r="4" fill="#ffc8d2" />
+    <circle cx="1650" cy="960" r="4" fill="#c5ccff" />
+    <circle cx="1800" cy="960" r="4" fill="#b8e5cf" />
+  </g>
+  
+  <!-- Organic flowing elements with gradients -->
+  <g stroke-width="1.8" fill="none" stroke-opacity="0.35">
+    <path d="M0,200 Q480,150 960,250 T1920,180" stroke="url(#blue-green)" />
+    <path d="M0,600 Q480,650 960,550 T1920,620" stroke="url(#green-pink)" />
+    <path d="M300,0 Q250,270 350,540 T280,1080" stroke="url(#pink-purple)" />
+    <path d="M1600,0 Q1650,270 1550,540 T1620,1080" stroke="url(#purple-mint)" />
+  </g>
+  
+  <!-- Intersecting patterns with gradients -->
+  <g stroke-width="1" stroke-opacity="0.25" fill="none">
+    <path d="M0,0 L1920,1080" stroke="#a2aaff" />
+    <path d="M1920,0 L0,1080" stroke="#e0b8c0" />
+    <path d="M960,0 L1920,540 L960,1080 L0,540 Z" stroke="#c0e8d0" />
+    <path d="M480,0 L0,540 L480,1080 L960,540 Z" stroke="#b1baf5" />
+    <path d="M1440,0 L1920,540 L1440,1080 L960,540 Z" stroke="#ffc2d1" />
+  </g>
+</svg> 

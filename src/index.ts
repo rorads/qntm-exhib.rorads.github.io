@@ -1,6 +1,12 @@
 import './styles.css';
 import { QuantumSymbol, ModalOptions } from './types';
 
+// Audio management variables
+let audioContext: AudioContext | null = null;
+let audioBuffer: AudioBuffer | null = null;
+let audioSource: AudioBufferSourceNode | null = null;
+let isMuted: boolean = true; // Start muted
+
 // Quantum symbol definitions
 const quantumSymbols: QuantumSymbol[] = [
   {
@@ -20,7 +26,7 @@ const quantumSymbols: QuantumSymbol[] = [
     description: 'The Planck constant is a fundamental physical constant central to quantum mechanics.',
     position: { x: 65, y: 45 },
     velocity: { x: -0.04, y: 0.02 },
-    size: 50,
+    size: 60,
     color: '#e74c3c'
   },
   {
@@ -30,7 +36,7 @@ const quantumSymbols: QuantumSymbol[] = [
     description: 'Pauli matrices are a set of complex matrices that are Hermitian and unitary, used in quantum mechanics.',
     position: { x: 40, y: 70 },
     velocity: { x: 0.03, y: -0.02 },
-    size: 55,
+    size: 60,
     color: '#2ecc71'
   },
   {
@@ -40,10 +46,31 @@ const quantumSymbols: QuantumSymbol[] = [
     description: 'In quantum mechanics, the uncertainty principle states that certain pairs of physical properties cannot be precisely measured simultaneously.',
     position: { x: 75, y: 65 },
     velocity: { x: -0.02, y: -0.03 },
-    size: 45,
+    size: 60,
     color: '#f39c12'
+  },
+  {
+    id: 'omega',
+    name: 'Quantum Entanglement',
+    symbol: '🍌',
+    description: 'Quantum entanglement is a phenomenon where two particles can become correlated in such a way that their properties are linked, even when separated by large distances.',
+    position: { x: 55, y: 55 },
+    velocity: { x: 0.01, y: 0.01 },
+    size: 60,
+    color: '#9b59b6'
+  },
+  // an example using a word as the symbol and with some html formatted text as the description
+  {
+    id: 'rory',
+    name: 'Rory',
+    symbol: 'ro',
+    description: '<h1>Rory</h1> <p>Rory built this page. He likes:</p> <ul><li>Quantum Mechanics</li><li>Typescript</li><li><em>Webpack</em></li></ul>',
+    position: { x: 20, y: 30 },
+    velocity: { x: 0.05, y: 0.001 },
+    size: 60,
+    color: '#9b59b6'
   }
-];
+]
 
 // DOM references
 const symbolsContainer = document.getElementById('symbols-container') as HTMLDivElement;
@@ -137,6 +164,169 @@ function closeModal() {
   document.body.classList.remove('modal-open');
 }
 
+// Audio functions
+async function initializeAudio() {
+  try {
+    console.log("Initializing audio...");
+    audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    console.log("AudioContext created, state:", audioContext.state);
+    
+    console.log("Fetching audio file...");
+    const response = await fetch('./assets/fm_synth_quantum.wav');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch audio: ${response.status} ${response.statusText}`);
+    }
+    
+    const arrayBuffer = await response.arrayBuffer();
+    console.log("Audio file fetched, size:", arrayBuffer.byteLength, "bytes");
+    
+    try {
+      console.log(arrayBuffer)
+      audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+      console.log("Audio buffer created successfully");
+      updateMuteButtonState(); // Update button to show audio is available
+    } catch (decodeError) {
+      console.error("Failed to decode audio:", decodeError);
+      showAudioError();
+    }
+  } catch (error) {
+    console.error("Failed to initialize audio:", error);
+    showAudioError();
+  }
+}
+
+function showAudioError() {
+  const muteButton = document.getElementById('mute-button');
+  if (muteButton) {
+    muteButton.innerHTML = '🔇 Audio Error';
+    muteButton.classList.add('audio-error');
+    muteButton.title = 'Audio file could not be loaded';
+    (muteButton as HTMLButtonElement).disabled = true;
+  }
+}
+
+function updateMuteButtonState() {
+  const muteButton = document.getElementById('mute-button');
+  if (!muteButton) return;
+  
+  if (isMuted) {
+    muteButton.innerHTML = '🔊 Play Audio';
+    muteButton.classList.add('muted');
+    muteButton.classList.remove('playing');
+  } else {
+    muteButton.innerHTML = '🔇 Mute Audio';
+    muteButton.classList.remove('muted');
+    muteButton.classList.add('playing');
+  }
+}
+
+function playAudio() {
+  if (!audioContext || !audioBuffer) {
+    console.error("AudioContext or buffer not initialized");
+    return;
+  }
+  
+  if (isMuted) {
+    console.log("Audio is muted, not playing");
+    return;
+  }
+  
+  console.log("Playing audio");
+  
+  // If already playing, stop the current source
+  if (audioSource) {
+    audioSource.stop();
+    audioSource = null;
+  }
+  
+  // Create a new source
+  audioSource = audioContext.createBufferSource();
+  audioSource.buffer = audioBuffer;
+  audioSource.connect(audioContext.destination);
+  
+  // Remove looping to prevent perceived infinite loop
+  // audioSource.loop = true; - This might be causing the issue
+  
+  // Add an onended handler instead of looping
+  audioSource.onended = () => {
+    console.log("Audio playback ended");
+    // Only restart if still unmuted
+    if (!isMuted) {
+      console.log("Restarting audio playback");
+      playAudio();
+    }
+  };
+  
+  audioSource.start();
+}
+
+function toggleMute() {
+  // Only proceed with toggle if we've completed initialization
+  if (!audioContext || !audioBuffer) {
+    console.log("Audio not ready, initializing...");
+    initializeAudio(); // Try to initialize again
+    return;
+  }
+  
+  console.log("Toggle mute from:", isMuted, "to:", !isMuted);
+  isMuted = !isMuted;
+  updateMuteButtonState();
+  
+  if (isMuted) {
+    if (audioSource) {
+      console.log("Stopping audio");
+      audioSource.stop();
+      audioSource = null;
+    }
+  } else {
+    console.log("Attempting to play audio");
+    // Resume audio context if it was suspended (autoplay policy)
+    if (audioContext.state === 'suspended') {
+      audioContext.resume().then(() => {
+        console.log("AudioContext resumed");
+        playAudio();
+      });
+    } else {
+      playAudio();
+    }
+  }
+}
+
+function createMuteButton() {
+  const muteButton = document.createElement('button');
+  muteButton.id = 'mute-button';
+  muteButton.className = 'mute-button muted';
+  muteButton.innerHTML = '🔊 Play Audio';
+  muteButton.title = 'Click to play audio';
+  
+  muteButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleMute();
+  });
+  
+  document.body.appendChild(muteButton);
+  console.log("Mute button created");
+}
+
+function createAboutButton() {
+  const aboutButton = document.createElement('button');
+  aboutButton.id = 'about-button';
+  aboutButton.className = 'about-button';
+  aboutButton.innerHTML = 'About';
+  aboutButton.title = 'About this project';
+  
+  aboutButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    openModal({
+      title: 'About',
+      content: 'This is a quantum symbols visualization project. It demonstrates quantum mechanics concepts through interactive floating symbols.'
+    });
+  });
+  
+  document.body.appendChild(aboutButton);
+  console.log("About button created");
+}
+
 // Event listeners
 if (closeButton) {
   closeButton.addEventListener('click', closeModal);
@@ -158,6 +348,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   createSymbols();
   animateSymbols();
+  createMuteButton(); // Add mute button
+  createAboutButton(); // Add about button
+  initializeAudio();  // Initialize audio
   
   // Add this for debugging
   console.log("Quantum Symbols initialized");
