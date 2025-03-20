@@ -8,10 +8,16 @@
     "start": "webpack serve --open --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["quantum", "interactive", "symbols", "spa"],
+  "keywords": [
+    "quantum",
+    "interactive",
+    "symbols",
+    "spa"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
     "style-loader": "^3.3.3",
