@@ -69,9 +69,9 @@ const quantumSymbols = [
     {
         id: 'rory',
         name: 'Rory',
-        symbol: 'rory',
+        symbol: 'ro',
         description: '<h1>Rory</h1> <p>Rory built this page. He likes:</p> <ul><li>Quantum Mechanics</li><li>Typescript</li><li><em>Webpack</em></li></ul>',
-        position: { x: 10, y: 10 },
+        position: { x: 20, y: 30 },
         velocity: { x: 0.05, y: 0.001 },
         size: 60,
         color: '#9b59b6'
@@ -284,6 +284,22 @@ function createMuteButton() {
     document.body.appendChild(muteButton);
     console.log("Mute button created");
 }
+function createAboutButton() {
+    const aboutButton = document.createElement('button');
+    aboutButton.id = 'about-button';
+    aboutButton.className = 'about-button';
+    aboutButton.innerHTML = 'About';
+    aboutButton.title = 'About this project';
+    aboutButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openModal({
+            title: 'About',
+            content: 'This is a quantum symbols visualization project. It demonstrates quantum mechanics concepts through interactive floating symbols.'
+        });
+    });
+    document.body.appendChild(aboutButton);
+    console.log("About button created");
+}
 // Event listeners
 if (closeButton) {
     closeButton.addEventListener('click', closeModal);
@@ -303,6 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createSymbols();
     animateSymbols();
     createMuteButton(); // Add mute button
+    createAboutButton(); // Add about button
     initializeAudio(); // Initialize audio
     // Add this for debugging
     console.log("Quantum Symbols initialized");
