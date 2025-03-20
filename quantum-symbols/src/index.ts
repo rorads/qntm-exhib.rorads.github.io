@@ -114,10 +114,11 @@ function openModal(options: ModalOptions) {
     return;
   }
   
-  console.log("Opening modal:", options.title); // Debug log
+  console.log("Opening modal:", options.title);
   
   modalTitle.textContent = options.title;
-  modalBody.textContent = options.content;
+  // Use innerHTML instead of textContent to respect HTML tags
+  modalBody.innerHTML = options.content;
   
   // Set direct CSS properties to ensure visibility
   modal.style.display = 'flex';

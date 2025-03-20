@@ -74,6 +74,8 @@ body {
   max-width: 600px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .close-button {
@@ -102,14 +104,15 @@ body.modal-open {
 #modal-body {
   line-height: 1.6;
   white-space: pre-wrap; /* This makes the text respect newlines */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .modal-content {
-    margin: 30% auto;
+    margin: 10% auto;
     width: 90%;
-    padding: 20px;
+    max-height: 70vh; /* Smaller max height on mobile */
   }
   
   .quantum-symbol {
