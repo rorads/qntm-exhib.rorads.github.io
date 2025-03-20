@@ -26,7 +26,7 @@ const quantumSymbols: QuantumSymbol[] = [
     description: 'The Planck constant is a fundamental physical constant central to quantum mechanics.',
     position: { x: 65, y: 45 },
     velocity: { x: -0.04, y: 0.02 },
-    size: 50,
+    size: 60,
     color: '#e74c3c'
   },
   {
@@ -36,7 +36,7 @@ const quantumSymbols: QuantumSymbol[] = [
     description: 'Pauli matrices are a set of complex matrices that are Hermitian and unitary, used in quantum mechanics.',
     position: { x: 40, y: 70 },
     velocity: { x: 0.03, y: -0.02 },
-    size: 55,
+    size: 60,
     color: '#2ecc71'
   },
   {
@@ -46,10 +46,31 @@ const quantumSymbols: QuantumSymbol[] = [
     description: 'In quantum mechanics, the uncertainty principle states that certain pairs of physical properties cannot be precisely measured simultaneously.',
     position: { x: 75, y: 65 },
     velocity: { x: -0.02, y: -0.03 },
-    size: 45,
+    size: 60,
     color: '#f39c12'
+  },
+  {
+    id: 'omega',
+    name: 'Quantum Entanglement',
+    symbol: '🍌',
+    description: 'Quantum entanglement is a phenomenon where two particles can become correlated in such a way that their properties are linked, even when separated by large distances.',
+    position: { x: 55, y: 55 },
+    velocity: { x: 0.01, y: 0.01 },
+    size: 60,
+    color: '#9b59b6'
+  },
+  // an example using a word as the symbol and with some html formatted text as the description
+  {
+    id: 'rory',
+    name: 'Rory',
+    symbol: 'rory',
+    description: '<h1>Rory</h1> <p>Rory built this page. He likes:</p> <ul><li>Quantum Mechanics</li><li>Typescript</li><li><em>Webpack</em></li></ul>',
+    position: { x: 10, y: 10 },
+    velocity: { x: 0.05, y: 0.001 },
+    size: 60,
+    color: '#9b59b6'
   }
-];
+]
 
 // DOM references
 const symbolsContainer = document.getElementById('symbols-container') as HTMLDivElement;
