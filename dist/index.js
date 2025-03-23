@@ -17,22 +17,18 @@ let isMuted = true; // Start muted
 const quantumSymbols = [
     {
         id: 'psi',
-        name: 'Wave Function',
+        name: 'Waveform Convergence',
         symbol: 'Ψ',
-        description: 'The wave function represents the quantum state of a quantum system.' +
-            'It contains all the information about the system.\n\n Lorem ipsum dolor sit amet, ' +
-            'consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
-            'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n ' +
-            '<img src="https://c.pxhere.com/photos/99/43/art_museum_work_vanguard_architecture_contemporary_art_sculpture_abstract-825196.jpg!d" alt="Quantum Symbols" width="300" height="auto" /> \n\n ' +
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
-            'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \n\n ' +
-            'Here is some text with various html formatting: \n\n ' +
-            '<strong>Bold</strong>, <em>Italic</em>, <u>Underline</u>, <a href="https://example.com">Link</a>, ' +
-            '<ul><li>List Item 1</li><li>List Item 2</li></ul>',
+        description: '<h3>Artist: Heisenberg Planck</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/1.webp" alt="Waveform Convergence Installation" width="300" height="auto" />\n\n' +
+            'This immersive installation explores the convergence of sound waves and visual patterns in a symbiotic relationship. ' +
+            'Visitors walk through a corridor of suspended translucent panels that react to their presence, creating ' +
+            'rippling wave patterns that transform the space around them.\n\n' +
+            'The installation challenges our understanding of permanence and observation, asking viewers to consider how ' +
+            'their mere presence alters the reality they perceive. Each visitor experiences a unique manifestation of the work, ' +
+            'much like the probabilistic nature of quantum phenomena.\n\n' +
+            '<strong>Medium:</strong> Reactive projection, motion sensors, transparent acrylic, custom software\n' +
+            '<ul><li>Featured at Venice Biennale 2023</li><li>Winner, Golden Light Award</li><li>Permanent collection, MOMA</li></ul>',
         position: { x: 25, y: 25 },
         velocity: { x: 0.02, y: 0.03 },
         size: 60,
@@ -40,9 +36,17 @@ const quantumSymbols = [
     },
     {
         id: 'h',
-        name: 'Planck Constant',
+        name: 'Constant Flux',
         symbol: 'ℎ',
-        description: 'The Planck constant is a fundamental physical constant central to quantum mechanics.',
+        description: '<h3>Artist: Quanta Bohr</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Constant Flux Installation" width="300" height="auto" />\n\n' +
+            'This kinetic sculpture uses magnetically suspended elements that never quite settle into a fixed position. ' +
+            'The seemingly chaotic movements follow precise mathematical formulas derived from quantum field theory, ' +
+            'creating a mesmerizing dance of metal and light that appears both random and ordered.\n\n' +
+            'The sculpture plays with the concept of discrete energy states, with subtle LED elements that shift in brightness ' +
+            'only at specific intervals, never between them - a physical manifestation of quantum leaps.\n\n' +
+            '<strong>Medium:</strong> Polished aluminum, neodymium magnets, microcontrollers, LEDs\n' +
+            '<ul><li>Commissioned by CERN for their public gallery</li><li>Tour includes Tokyo Science Museum and Smithsonian</li></ul>',
         position: { x: 65, y: 45 },
         velocity: { x: -0.04, y: 0.02 },
         size: 60,
@@ -50,9 +54,18 @@ const quantumSymbols = [
     },
     {
         id: 'sigma',
-        name: 'Pauli Matrices',
+        name: 'Matrix Reflections',
         symbol: 'σ',
-        description: 'Pauli matrices are a set of complex matrices that are Hermitian and unitary, used in quantum mechanics.',
+        description: '<h3>Artist: Pauli Schrödinger</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/3.webp" alt="Matrix Reflections Installation" width="300" height="auto" />\n\n' +
+            'A room of perfectly aligned mirrors creates infinite reflections that transform visitors into multi-dimensional beings. ' +
+            'Special dichroic filters cause the reflections to split into different spectra based on viewing angle, ' +
+            'representing the multi-state nature of quantum information.\n\n' +
+            'As viewers move through the space, their reflections appear to make decisions independent of the original, ' +
+            'suggesting parallel realities coexisting within our own. The installation creates a sense of disorientation that ' +
+            'forces confrontation with our limited perception of dimensions.\n\n' +
+            '<strong>Medium:</strong> Custom mirrors, dichroic glass, geometric framework, programmed lighting\n' +
+            '<ul><li>Current exhibition at Guggenheim</li><li>Featured in "Quantum Aesthetics" documentary</li></ul>',
         position: { x: 40, y: 70 },
         velocity: { x: 0.03, y: -0.02 },
         size: 60,
@@ -60,9 +73,18 @@ const quantumSymbols = [
     },
     {
         id: 'delta',
-        name: 'Uncertainty',
+        name: 'Uncertainty Principle',
         symbol: 'Δ',
-        description: 'In quantum mechanics, the uncertainty principle states that certain pairs of physical properties cannot be precisely measured simultaneously.',
+        description: '<h3>Artist: Max Feynman</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="Uncertainty Principle Installation" width="300" height="auto" />\n\n' +
+            'This interactive installation features a series of delicate pendulums whose movements are influenced by subtle ' +
+            'air currents created by visitors. The more closely one attempts to observe the pendulums, the more one\'s breath ' +
+            'and body heat disrupt their patterns, making precise measurement impossible.\n\n' +
+            'Overhead cameras track the pendulum movements, generating real-time visualizations that demonstrate the ' +
+            'mathematical beauty of uncertainty. The piece comments on the futility of perfect knowledge and the ' +
+            'observer effect inherent in all systems.\n\n' +
+            '<strong>Medium:</strong> Suspended glass pendulums, thermal sensors, generative projection mapping\n' +
+            '<ul><li>Published in Art & Physics Quarterly</li><li>Acquired by Tate Modern permanent collection</li></ul>',
         position: { x: 75, y: 65 },
         velocity: { x: -0.02, y: -0.03 },
         size: 60,
@@ -70,20 +92,38 @@ const quantumSymbols = [
     },
     {
         id: 'omega',
-        name: 'Quantum Entanglement',
+        name: 'Entangled States',
         symbol: '🍌',
-        description: 'Quantum entanglement is a phenomenon where two particles can become correlated in such a way that their properties are linked, even when separated by large distances.',
+        description: '<h3>Artist: Niels Einstein</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/5.webp" alt="Entangled States Installation" width="300" height="auto" />\n\n' +
+            'A provocative installation featuring two separate rooms in different parts of the gallery that are connected ' +
+            'through technology. Actions in one room cause immediate reactions in the other, defying our classical understanding ' +
+            'of cause and effect. The banana symbol serves as a whimsical reference to quantum absurdity.\n\n' +
+            'Visitors collaborate unknowingly with strangers, creating synchronized light patterns and sound compositions ' +
+            'that evolve based on collective behavior. The piece explores connection, causality, and the invisible threads ' +
+            'that bind seemingly separate systems.\n\n' +
+            '<strong>Medium:</strong> Custom sensors, fiber optics, real-time data transmission, responsive environments\n' +
+            '<ul><li>Winner of the Quantum Art Prize</li><li>Installations in New York and Tokyo simultaneously</li></ul>',
         position: { x: 55, y: 55 },
         velocity: { x: 0.01, y: 0.01 },
         size: 60,
         color: '#9b59b6'
     },
-    // an example using a word as the symbol and with some html formatted text as the description
     {
         id: 'rory',
-        name: 'Rory',
+        name: 'Code as Medium',
         symbol: 'ro',
-        description: '<h1>Rory</h1> <p>Rory built this page. He likes:</p> <ul><li>Quantum Mechanics</li><li>Typescript</li><li><em>Webpack</em></li></ul>',
+        description: '<h3>Artist: Dirac Wheeler</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/6.webp" alt="Code as Medium Installation" width="300" height="auto" />\n\n' +
+            '<h3>A Meta-Exhibition on Digital Art</h3>' +
+            '<p>This self-referential installation examines the relationship between code and creation. The piece consists of ' +
+            'live coding terminals where the artist\'s programmed creations evolve in real-time, with visitors able to see ' +
+            'both the code and its artistic output simultaneously.</p>\n' +
+            '<p>The installation questions the nature of authorship in the age of algorithms and explores the beauty of ' +
+            'logic as an artistic language. Text elements transform into visual patterns, creating a bridge between ' +
+            'the analytical and the aesthetic.</p>\n' +
+            '<strong>Medium:</strong> JavaScript, TypeScript, generative algorithms, interactive displays\n\n' +
+            '<ul><li>Featured at Electronic Arts Festival</li><li>Collaboration with MIT Media Lab</li><li>Open-source components available on GitHub</li></ul>',
         position: { x: 20, y: 30 },
         velocity: { x: 0.05, y: 0.001 },
         size: 60,
@@ -307,7 +347,13 @@ function createAboutButton() {
         event.stopPropagation();
         openModal({
             title: 'About',
-            content: 'This is a quantum symbols visualization project. It demonstrates quantum mechanics concepts through interactive floating symbols.'
+            content: 'This is an exhibition walkthrough website, optimized for any device, built by Rory Scott (<a href="https://rorads.github.io" target="_blank">rorads.github.io</a>). ' +
+                'It showcases quantum-inspired art installations through interactive floating symbols.\n\n' +
+                'The soundtrack accompanying the exhibition is a sonification of Rabi cycle data using FM synthesis. ' +
+                'The Rabi cycle represents the cyclic behavior of a two-level quantum system in the presence of an oscillatory driving field. ' +
+                'The full sonification tool can be found at <a href="https://xy-sonification.streamlit.app/" target="_blank">xy-sonification.streamlit.app</a>.\n\n' +
+                'The source code for this project is available on GitHub: ' +
+                '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">github.com/rorads/qntm-exhib.rorads.github.io</a>'
         });
     });
     document.body.appendChild(aboutButton);
