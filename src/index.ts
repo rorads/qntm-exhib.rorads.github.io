@@ -207,19 +207,29 @@ function createSymbols() {
 
 // Animation of symbols
 function animateSymbols() {
+  // Velocity scaling for debugging (1 = normal speed)
+  const velocityScale = 10;
+  
+  // Detect if user is on iOS Chrome
+  const isIOSChrome = /CriOS/.test(navigator.userAgent);
+  
+  // Smaller bottom offset only for iOS Chrome
+  const bottomOffset = isIOSChrome ? 85 : 90;
+  
   quantumSymbols.forEach(symbol => {
     const symbolElement = document.getElementById(symbol.id) as HTMLDivElement;
     
-    // Update position based on velocity
-    symbol.position.x += symbol.velocity.x;
-    symbol.position.y += symbol.velocity.y;
+    // Update position based on velocity (with scaling)
+    symbol.position.x += symbol.velocity.x * velocityScale;
+    symbol.position.y += symbol.velocity.y * velocityScale;
     
-    // Bounce off edges
+    // Bounce off edges - normal horizontal bounds
     if (symbol.position.x <= 0 || symbol.position.x >= 90) {
       symbol.velocity.x *= -1;
     }
     
-    if (symbol.position.y <= 0 || symbol.position.y >= 90) {
+    // Vertical bounds with adjusted bottom for iOS Chrome
+    if (symbol.position.y <= 0 || symbol.position.y >= bottomOffset) {
       symbol.velocity.y *= -1;
     }
     
