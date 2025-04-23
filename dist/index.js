@@ -78,6 +78,27 @@ const quantumSymbols = [
         size: 60,
         color: '#e74c3c'
     },
+    {
+        id: 'ana2',
+        name: 'The Black Box',
+        symbol: '∞',
+        description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="The Black Box Installation" width="300" height="auto" />\n\n' +
+            '<p>What does \'quantum\' mean to you?</p>\n' +
+            '<p>This sound piece plays an infinite loop of voice notes from non-experts answering that question. Housed inside a literal black box, it reflects how the field of quantum physics is often seen: mysterious, sealed off and a little intimidating. And yet, somehow, we\'ve all heard the word.</p>\n' +
+            '<p>The word quantum has become part of our everyday language—appearing in music, psychology, philosophy, art, spirituality, science fiction, film, wellness, and beyond. This cultural spread has been shaped less by physicists and more by artists, writers, filmmakers, and thinkers—those who reinterpret science through metaphor, story, and imagination.</p>\n' +
+            '<p>Of course, there\'s something a bit ironic here. While this exhibition continues the tradition of non-experts reinterpreting quantum through artistic imagination, it also reflects a gap in how the field has been communicated. In a world where science can feel distant, overly complex, or even elitist, there\'s room (and a need) for more generous, open dialogue between scientists and the public...especially when complex scientific language like quantum terminology is sometimes used or communicated in ways that can mislead or have unintended consequences.</p>\n' +
+            '<p>Still, the concept has become wonderfully malleable. It\'s been stretched and abstracted; it now means everything… and nothing. But across all these interpretations, one thing tends to remain: a sense of ungraspability. The word quantum gestures toward something that resists certainty—something fundamentally unknowable, just out of reach. Perhaps that\'s why it resonates so deeply: it mirrors our experience of reality in some way.</p>\n' +
+            '<p>This piece invites listeners to reflect on their own interpretation of the term. Some voice notes are funny, some thoughtful, some poetic or uncertain. But together, they suggest something bigger: that reality is more complex than it seems. That not knowing is okay. That curiosity is enough.</p>\n' +
+            '<p><strong>Medium:</strong> Sound installation, headset, recycled wood</p>\n' +
+            '<p><em>Black box and headset stand made by Boomerang Woodworking, a community Workshop promoting wellbeing, creativity and skills development through woodwork with the reuse of recycled wood at the heart of their philosophy.</em></p>\n' +
+            '<h4>Artist Bio</h4>' +
+            '<p>Ana (she/her) holds a PhD in Political Communication and is passionate about making academic research more accessible to a wider audience. She is also an electronic music producer (under the alias lunattic), and radio host at local community radio station Radio Buena Vida. Over the past couple of years, she has facilitated music production workshops with a focus on accessibility and collaboration. Her creative work—whether through music, radio, or teaching—is driven by a commitment to playfulness and experimentation.</p>',
+        position: { x: 40, y: 70 },
+        velocity: { x: 0.03, y: -0.02 },
+        size: 60,
+        color: '#2ecc71'
+    },
     // {
     //   id: 'h',
     //   name: 'Constant Flux',
