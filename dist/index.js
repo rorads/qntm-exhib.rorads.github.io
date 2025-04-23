@@ -110,22 +110,21 @@ const quantumSymbols = [
         color: '#9b59b6'
     },
     {
-        id: 'rory',
-        name: 'Code as Medium',
-        symbol: 'ro',
-        description: '<h3>Artist: Dirac Wheeler</h3>' +
-            '<img src="./assets/demo-exhibit-pictures-ai/6.webp" alt="Code as Medium Installation" width="300" height="auto" />\n\n' +
-            '<h3>A Meta-Exhibition on Digital Art</h3>' +
-            '<p>This self-referential installation examines the relationship between code and creation. The piece consists of ' +
-            'live coding terminals where the artist\'s programmed creations evolve in real-time, with visitors able to see ' +
-            'both the code and its artistic output simultaneously.</p>\n' +
-            '<p>The installation questions the nature of authorship in the age of algorithms and explores the beauty of ' +
-            'logic as an artistic language. Text elements transform into visual patterns, creating a bridge between ' +
-            'the analytical and the aesthetic.</p>\n' +
-            '<strong>Medium:</strong> JavaScript, TypeScript, generative algorithms, interactive displays\n\n' +
-            '<ul><li>Featured at Electronic Arts Festival</li><li>Collaboration with MIT Media Lab</li><li>Open-source components available on GitHub</li></ul>',
+        id: 'matty',
+        name: 'Connection',
+        symbol: '🍻',
+        description: '<h3>Artist: Matthew Wasylko</h3>' +
+            '<img src="./assets/actual-exhibit-images/matty_depiction_image.png" alt="Connection Installation" width="300" height="auto" />\n\n' +
+            '<p><em>Two particles intertwined.</em><br>' +
+            '<em>Born together.</em><br>' +
+            '<em>Perfectly correlated.</em><br>' +
+            '<em>No matter how far apart you move them, they will stay connected.</em></p>\n' +
+            '<p>Connection is a 3D interactive artwork inspired by graphical representations of quantum entanglement. Built using shaders within a 3D graphics framework, the piece explores the dynamic, electric-like space between two bound particles. Their connection is in constant motion—shifting, weaving, and responding to semi-random input within mathematical expressions. Emerging patterns cluster, fold, and overlap, forming new, evolving shapes. Within and across the particles, a continuously excited tessellation blends colour, form, and movement. Though separate, the particles remain perpetually linked, flying together through an otherwise empty space.</p>\n' +
+            '<strong>Medium:</strong> GLSL, THREE.JS, Code/Algorithm, Arduino\n\n' +
+            '<p><strong>Artist Bio</strong><br>' +
+            'Matthew Wasylko is a Glasgow-based creative technologist and multimedia artist working with computational methods across video, audio, photography and digital media. His practice explores the influence of code on both physical and perceptual spaces, focusing on procedural decision-making and generative systems. Rather than imitating traditional forms, Wasylko uses algorithmic processes to shape meaning, emotion and interaction. His work examines the interface between technology and human perception, connecting audiences to the underlying systems that shape both digital and natural worlds. Through his chosen media, he documents his exploration into new systems of expression, structure and experience. Matthew is also taking part in a fundraiser, which you can donate to through this link: <a href="https://www.justgiving.com/page/matthew-wasylko?utm_medium=FR&utm_source=CL&utm_campaign=015" target="_blank">https://www.justgiving.com/page/matthew-wasylko</a></p>\n\n',
         position: { x: 20, y: 30 },
-        velocity: { x: 0.05, y: 0.001 },
+        velocity: { x: 0.05, y: 0.01 },
         size: 60,
         color: '#9b59b6'
     }
