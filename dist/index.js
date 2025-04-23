@@ -216,10 +216,11 @@ function animateSymbols() {
     // Detect if user is on iOS Chrome or iOS Safari
     const isIOSChrome = !!navigator.userAgent.match('CriOS');
     const isIOSSafari = !!navigator.userAgent.match('Safari');
-    // Define a smaller bottom boundary for iOS Chrome to account for its interface elements
-    // iOS Chrome has a navigation bar at the bottom that takes up more space than other browsers
-    // Using 85% instead of 90% prevents symbols from disappearing behind this UI element
-    const bottomOffset = isIOSChrome || isIOSSafari ? 80 : 90;
+    // Define different bottom boundaries based on browser
+    // iOS Chrome has a larger navigation bar at the bottom that takes up more space
+    // iOS Safari has a smaller navigation bar but still needs adjustment
+    // Using adjusted percentages prevents symbols from disappearing behind UI elements
+    const bottomOffset = isIOSChrome ? 80 : (isIOSSafari ? 85 : 90);
     quantumSymbols.forEach(symbol => {
         const symbolElement = document.getElementById(symbol.id);
         // Update position based on velocity (with scaling)
