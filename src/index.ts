@@ -53,6 +53,25 @@ const quantumSymbols: QuantumSymbol[] = [
     size: 60,
     color: '#9b59b6'
   },
+  {
+    id: 'darren',
+    name: 'Harvest Now, Decrypt Later',
+    symbol: '🌽',
+    description: '<h3>Artist: Darren Robertson</h3>' +
+      '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Harvest Now, Decrypt Later Game" width="300" height="auto" />\n\n' +
+      '<p>Are we ready for Q-Day?</p>\n' +
+      '<p>There will come a day when quantum computers are powerful enough to break existing encryption methods. Much of the world\'s data and systems will be vulnerable to actors with access to this technology.</p>\n' +
+      '<p>Cybersecurity experts recommend that we adapt to quantum-safe methods of cryptography to protect our data from this future threat. These methods already exist, however the vast majority of the world\'s data is not using it. There is on-going efforts to make the transition.</p>\n' +
+      '<p>But what if you stole and held onto this data in the present day? You can\'t decrypt it yet. But one day you might. This day has been coined as "Quantum Day" or Q-Day.</p>\n' +
+      '<p>"Harvest Now, Decrypt Later" is a game that puts the player in the role of a hacker tasked with harvesting data. You will hop between different organisation and choose which data to steal from them. Experts predict Q-Day will be with us in 5-30 years. Will the data you choose to harvest be of any use in that time?</p>\n' +
+      '<p><strong>Medium:</strong> Interactive Game</p>\n' +
+      '<h4>Artist Bio</h4>' +
+      '<p>Darren Robertson is a game designer and developer focused on creating experiences that explore complex technological concepts through accessible gameplay. Visit more of his work at: <a href="https://dobertson.itch.io" target="_blank">dobertson.itch.io</a></p>',
+    position: { x: 65, y: 45 },
+    velocity: { x: -0.04, y: 0.02 },
+    size: 60,
+    color: '#e74c3c'
+  },
   // {
   //   id: 'h',
   //   name: 'Constant Flux',
