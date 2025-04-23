@@ -93,6 +93,11 @@ body {
   a:visited {
     color: #5ba8e0; /* Slightly darker blue for visited links */
   }
+
+  p {
+    margin: 0.5em 0; /* Adjust spacing as needed */
+    text-align: justify; /* Justify the paragraph text */
+  }
 }
 
 .close-button {
