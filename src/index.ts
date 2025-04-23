@@ -7,6 +7,9 @@ let audioBuffer: AudioBuffer | null = null;
 let audioSource: AudioBufferSourceNode | null = null;
 let isMuted: boolean = true; // Start muted
 
+// print a dialogue box with the user agent 
+alert(navigator.userAgent);
+
 // Quantum symbol definitions
 const quantumSymbols: QuantumSymbol[] = [
   {
@@ -211,8 +214,9 @@ function animateSymbols() {
   const velocityScale = 10;
   
   // Detect if user is on iOS Chrome
-  const isIOSChrome = /CriOS/.test(navigator.userAgent);
-  
+  const isIOSChrome = !!navigator.userAgent.match('CriOS');
+
+
   // Smaller bottom offset only for iOS Chrome
   const bottomOffset = isIOSChrome ? 85 : 90;
   
