@@ -7,8 +7,8 @@ let audioBuffer: AudioBuffer | null = null;
 let audioSource: AudioBufferSourceNode | null = null;
 let isMuted: boolean = true; // Start muted
 
-// Display an alert only if the user is on iOS Chrome
-if (!!navigator.userAgent.match('CriOS')) {
+// Display an alert only if the user is on iOS Chrome or iOS Safari
+if (!!navigator.userAgent.match('CriOS') || !!navigator.userAgent.match('Safari')) {
   alert(navigator.userAgent);
 }
 
@@ -215,8 +215,9 @@ function animateSymbols() {
   // Velocity scaling for debugging (1 = normal speed)
   const velocityScale = 10;
   
-  // Detect if user is on iOS Chrome
+  // Detect if user is on iOS Chrome or iOS Safari
   const isIOSChrome = !!navigator.userAgent.match('CriOS');
+  const isIOSSafari = !!navigator.userAgent.match('Safari');
 
   // Define a smaller bottom boundary for iOS Chrome to account for its interface elements
   // iOS Chrome has a navigation bar at the bottom that takes up more space than other browsers
