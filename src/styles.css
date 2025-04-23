@@ -66,8 +66,9 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background: rgba(170, 167, 234, 0.1);
   margin: auto;
+  text-align: center;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -76,28 +77,33 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   max-height: 80vh; /* Limit height to 80% of viewport height */
   overflow-y: auto; /* Enable vertical scrolling */
+  color: rgb(226, 247, 230);
+}
 
+/* Style for elements inside modal content */
+.modal-content a {
+  color: #6fc0ff; /* Light blue color for hyperlinks */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.2s ease; /* Smooth color transition on hover */
+}
 
-  /* Style for hyperlinks in the modal */
-  a {
-    color: #6fc0ff; /* Light blue color for hyperlinks */
-    text-decoration: none; /* Remove underline */
-    transition: color 0.2s ease; /* Smooth color transition on hover */
-  }
+.modal-content a:hover {
+  color: #a0d8ff; /* Lighter blue on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
 
-  a:hover {
-    color: #a0d8ff; /* Lighter blue on hover */
-    text-decoration: underline; /* Add underline on hover */
-  }
+.modal-content a:visited {
+  color: #5ba8e0; /* Slightly darker blue for visited links */
+}
 
-  a:visited {
-    color: #5ba8e0; /* Slightly darker blue for visited links */
-  }
+.modal-content p {
+  margin: 0.5em 0; /* Adjust spacing as needed */
+  text-align: centre; /* Justify the paragraph text */
+}
 
-  p {
-    margin: 0.5em 0; /* Adjust spacing as needed */
-    text-align: centre; /* Justify the paragraph text */
-  }
+.modal-content ul {
+  list-style-type: disc; /* Use disc bullets for list items */
+  margin-left: 20px; /* Add some indentation for lists */
 }
 
 .close-button {
@@ -160,15 +166,6 @@ body {
 
 .symbol:hover {
     transform: scale(1.2);
-}
-
-.modal-content {
-    max-width: 600px;
-    padding: 20px;
-    text-align: center;
-    background: rgba(170, 167, 234, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .close {

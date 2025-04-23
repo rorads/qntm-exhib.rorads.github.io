@@ -10,98 +10,29 @@ let isMuted: boolean = true; // Start muted
 // Quantum symbol definitions
 const quantumSymbols: QuantumSymbol[] = [
   {
-    id: 'psi',
-    name: 'Waveform Convergence',
-    symbol: 'Ψ',
-    description: '<h3>Artist: Heisenberg Planck</h3>' +
-      '<img src="./assets/demo-exhibit-pictures-ai/1.webp" alt="Waveform Convergence Installation" width="300" height="auto" />\n\n' +
-      '<p>This immersive installation explores the convergence of sound waves and visual patterns in a symbiotic relationship. ' +
-      'Visitors walk through a corridor of suspended translucent panels that react to their presence, creating ' +
-      'rippling wave patterns that transform the space around them.</p>\n' +
-      '<p>The installation challenges our understanding of permanence and observation, asking viewers to consider how ' +
-      'their mere presence alters the reality they perceive. Each visitor experiences a unique manifestation of the work, ' +
-      'much like the probabilistic nature of quantum phenomena.</p>\n' +
-      '<p><strong>Medium:</strong> Reactive projection, motion sensors, transparent acrylic, custom software</p>\n' +
-      '<ul><li>Featured at Venice Biennale 2023</li><li>Winner, Golden Light Award</li><li>Permanent collection, MOMA</li></ul>',
-    position: { x: 25, y: 25 },
+    id: 'ana1',
+    name: 'Quantum Soundscape',
+    symbol: '🔊',
+    description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
+      '<img src="./assets/demo-exhibit-pictures-ai/6.webp" alt="Quantum Soundscape Installation" width="300" height="auto" />\n\n' +
+      '<p>The beautiful hi-fi speakers were handmade by our friends Cameron and Finlay, who also organise the popular dance party \'Coorie Doon\' in Glasgow.</p>\n' +
+      '<p>The soundscape of the exhibition blends recordings from real quantum experiments with sonified data. Inspired by Pauline Oliveros\' concept of Quantum Listening, what at first seems like a steady drone gradually reveals subtle shifts and rich textures, mirroring the hidden complexity of the quantum world.</p>\n' +
+      '<p>I used the digital tool PaulXStretch to stretch audio and expose the sound particles within. Oliveros (1930–2016), an influential sound artist and philosopher, developed the idea of the listening effect, which parallels the observer effect in quantum physics, where the act of observing a particle changes the behavior of the particle (remember Schrödinger\'s cat?). As she wrote: "What is heard is changed by listening, and changes the listener."</p>\n' +
+      '<p>I positioned different sound sources in various parts of the space, not only to create a more immersive sonic environment, but also to reflect her idea that "Quantum Listening is listening to more than one reality simultaneously." One of the sound sources plays poetry by Glasgow-based artist and activist Nadia Violette—a reflection on static vision and its curious visual parallel to the quantum world.</p>\n' +
+      '<p><strong>Links:</strong></p>' +
+      '<ul style="text-align:left">' +
+      '<li><a href="https://sonosaurus.com/paulxstretch/" target="_blank">PaulXStretch</a></li>' +
+      '<li><a href="https://goodpress.co.uk/products/quantum-listening-by-pauline-oliveros-1" target="_blank">Quantum Listening by Pauline Oliveros</a></li>' +
+      '<li><a href="https://linktr.ee/nadia.the.poet?utm_source=linktree_profile_share&ltsid=64beaaed-bc10-45bb-a709-84f0345e7cb0" target="_blank">Nadia Violette</a></li>' +
+      '<li><a href="https://cooriedoonparty.org/" target="_blank">Coorie Doon</a></li>' +
+      '<li><a href="https://theconversation.com/a-new-quantum-paradox-throws-the-foundations-of-observed-reality-into-question-144426" target="_blank">Article from The Conversation about the observer effect</a></li>' +
+      '</ul>\n' +
+      '<h4>Artist Bio</h4>' +
+      '<p>Ana (she/her) holds a PhD in Political Communication and is passionate about making academic research more accessible to a wider audience. She is also an electronic music producer (under the alias lunattic), and radio host at local community radio station Radio Buena Vida. Over the past couple of years, she has facilitated music production workshops with a focus on accessibility and collaboration. Her creative work—whether through music, radio, or teaching—is driven by a commitment to playfulness and experimentation.</p>',
+    position: { x: 25, y: 35 },
     velocity: { x: 0.02, y: 0.03 },
     size: 60,
     color: '#3498db'
-  },
-  {
-    id: 'h',
-    name: 'Constant Flux',
-    symbol: 'ℎ',
-    description: '<h3>Artist: Quanta Bohr</h3>' +
-      '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Constant Flux Installation" width="300" height="auto" />\n\n' +
-      '<p>This kinetic sculpture uses magnetically suspended elements that never quite settle into a fixed position. ' +
-      'The seemingly chaotic movements follow precise mathematical formulas derived from quantum field theory, ' +
-      'creating a mesmerizing dance of metal and light that appears both random and ordered.</p>\n' +
-      '<p>The sculpture plays with the concept of discrete energy states, with subtle LED elements that shift in brightness ' +
-      'only at specific intervals, never between them - a physical manifestation of quantum leaps.</p>\n' +
-      '<p><strong>Medium:</strong> Polished aluminum, neodymium magnets, microcontrollers, LEDs</p>\n' +
-      '<ul><li>Commissioned by CERN for their public gallery</li><li>Tour includes Tokyo Science Museum and Smithsonian</li></ul>',
-    position: { x: 65, y: 45 },
-    velocity: { x: -0.04, y: 0.02 },
-    size: 60,
-    color: '#e74c3c'
-  },
-  {
-    id: 'sigma',
-    name: 'Matrix Reflections',
-    symbol: 'σ',
-    description: '<h3>Artist: Pauli Schrödinger</h3>' +
-      '<img src="./assets/demo-exhibit-pictures-ai/3.webp" alt="Matrix Reflections Installation" width="300" height="auto" />\n\n' +
-      '<p>A room of perfectly aligned mirrors creates infinite reflections that transform visitors into multi-dimensional beings. ' +
-      'Special dichroic filters cause the reflections to split into different spectra based on viewing angle, ' +
-      'representing the multi-state nature of quantum information.</p>\n' +
-      '<p>As viewers move through the space, their reflections appear to make decisions independent of the original, ' +
-      'suggesting parallel realities coexisting within our own. The installation creates a sense of disorientation that ' +
-      'forces confrontation with our limited perception of dimensions.</p>\n' +
-      '<p><strong>Medium:</strong> Custom mirrors, dichroic glass, geometric framework, programmed lighting</p>\n' +
-      '<ul><li>Current exhibition at Guggenheim</li><li>Featured in "Quantum Aesthetics" documentary</li></ul>',
-    position: { x: 40, y: 70 },
-    velocity: { x: 0.03, y: -0.02 },
-    size: 60,
-    color: '#2ecc71'
-  },
-  {
-    id: 'delta',
-    name: 'Uncertainty Principle',
-    symbol: 'Δ',
-    description: '<h3>Artist: Max Feynman</h3>' +
-      '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="Uncertainty Principle Installation" width="300" height="auto" />\n\n' +
-      '<p>This interactive installation features a series of delicate pendulums whose movements are influenced by subtle ' +
-      'air currents created by visitors. The more closely one attempts to observe the pendulums, the more one\'s breath ' +
-      'and body heat disrupt their patterns, making precise measurement impossible.</p>\n' +
-      '<p>Overhead cameras track the pendulum movements, generating real-time visualizations that demonstrate the ' +
-      'mathematical beauty of uncertainty. The piece comments on the futility of perfect knowledge and the ' +
-      'observer effect inherent in all systems.</p>\n' +
-      '<p><strong>Medium:</strong> Suspended glass pendulums, thermal sensors, generative projection mapping</p>\n' +
-      '<ul><li>Published in Art & Physics Quarterly</li><li>Acquired by Tate Modern permanent collection</li></ul>',
-    position: { x: 75, y: 65 },
-    velocity: { x: -0.02, y: -0.03 },
-    size: 60,
-    color: '#f39c12'
-  },
-  {
-    id: 'omega',
-    name: 'Entangled States',
-    symbol: '🍌',
-    description: '<h3>Artist: Niels Einstein</h3>' +
-      '<img src="./assets/demo-exhibit-pictures-ai/5.webp" alt="Entangled States Installation" width="300" height="auto" />\n\n' +
-      '<p>A provocative installation featuring two separate rooms in different parts of the gallery that are connected ' +
-      'through technology. Actions in one room cause immediate reactions in the other, defying our classical understanding ' +
-      'of cause and effect. The banana symbol serves as a whimsical reference to quantum absurdity.</p>\n' +
-      '<p>Visitors collaborate unknowingly with strangers, creating synchronized light patterns and sound compositions ' +
-      'that evolve based on collective behavior. The piece explores connection, causality, and the invisible threads ' +
-      'that bind seemingly separate systems.</p>\n' +
-      '<p style="text-align:left"><strong>Medium:</strong> Custom sensors, fiber optics, real-time data transmission, responsive environments</p>\n' +
-      '<ul><li>Winner of the Quantum Art Prize</li><li>Installations in New York and Tokyo simultaneously</li></ul>',
-    position: { x: 55, y: 55 },
-    velocity: { x: 0.01, y: 0.01 },
-    size: 60,
-    color: '#9b59b6'
   },
   {
     id: 'matty',
@@ -121,7 +52,82 @@ const quantumSymbols: QuantumSymbol[] = [
     velocity: { x: 0.05, y: 0.01 },
     size: 60,
     color: '#9b59b6'
-  }
+  },
+  // {
+  //   id: 'h',
+  //   name: 'Constant Flux',
+  //   symbol: 'ℎ',
+  //   description: '<h3>Artist: Quanta Bohr</h3>' +
+  //     '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Constant Flux Installation" width="300" height="auto" />\n\n' +
+  //     '<p>This kinetic sculpture uses magnetically suspended elements that never quite settle into a fixed position. ' +
+  //     'The seemingly chaotic movements follow precise mathematical formulas derived from quantum field theory, ' +
+  //     'creating a mesmerizing dance of metal and light that appears both random and ordered.</p>\n' +
+  //     '<p>The sculpture plays with the concept of discrete energy states, with subtle LED elements that shift in brightness ' +
+  //     'only at specific intervals, never between them - a physical manifestation of quantum leaps.</p>\n' +
+  //     '<p><strong>Medium:</strong> Polished aluminum, neodymium magnets, microcontrollers, LEDs</p>\n' +
+  //     '<ul><li>Commissioned by CERN for their public gallery</li><li>Tour includes Tokyo Science Museum and Smithsonian</li></ul>',
+  //   position: { x: 65, y: 45 },
+  //   velocity: { x: -0.04, y: 0.02 },
+  //   size: 60,
+  //   color: '#e74c3c'
+  // },
+  // {
+  //   id: 'sigma',
+  //   name: 'Matrix Reflections',
+  //   symbol: 'σ',
+  //   description: '<h3>Artist: Pauli Schrödinger</h3>' +
+  //     '<img src="./assets/demo-exhibit-pictures-ai/3.webp" alt="Matrix Reflections Installation" width="300" height="auto" />\n\n' +
+  //     '<p>A room of perfectly aligned mirrors creates infinite reflections that transform visitors into multi-dimensional beings. ' +
+  //     'Special dichroic filters cause the reflections to split into different spectra based on viewing angle, ' +
+  //     'representing the multi-state nature of quantum information.</p>\n' +
+  //     '<p>As viewers move through the space, their reflections appear to make decisions independent of the original, ' +
+  //     'suggesting parallel realities coexisting within our own. The installation creates a sense of disorientation that ' +
+  //     'forces confrontation with our limited perception of dimensions.</p>\n' +
+  //     '<p><strong>Medium:</strong> Custom mirrors, dichroic glass, geometric framework, programmed lighting</p>\n' +
+  //     '<ul><li>Current exhibition at Guggenheim</li><li>Featured in "Quantum Aesthetics" documentary</li></ul>',
+  //   position: { x: 40, y: 70 },
+  //   velocity: { x: 0.03, y: -0.02 },
+  //   size: 60,
+  //   color: '#2ecc71'
+  // },
+  // {
+  //   id: 'delta',
+  //   name: 'Uncertainty Principle',
+  //   symbol: 'Δ',
+  //   description: '<h3>Artist: Max Feynman</h3>' +
+  //     '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="Uncertainty Principle Installation" width="300" height="auto" />\n\n' +
+  //     '<p>This interactive installation features a series of delicate pendulums whose movements are influenced by subtle ' +
+  //     'air currents created by visitors. The more closely one attempts to observe the pendulums, the more one\'s breath ' +
+  //     'and body heat disrupt their patterns, making precise measurement impossible.</p>\n' +
+  //     '<p>Overhead cameras track the pendulum movements, generating real-time visualizations that demonstrate the ' +
+  //     'mathematical beauty of uncertainty. The piece comments on the futility of perfect knowledge and the ' +
+  //     'observer effect inherent in all systems.</p>\n' +
+  //     '<p><strong>Medium:</strong> Suspended glass pendulums, thermal sensors, generative projection mapping</p>\n' +
+  //     '<ul><li>Published in Art & Physics Quarterly</li><li>Acquired by Tate Modern permanent collection</li></ul>',
+  //   position: { x: 75, y: 65 },
+  //   velocity: { x: -0.02, y: -0.03 },
+  //   size: 60,
+  //   color: '#f39c12'
+  // },
+  // {
+  //   id: 'omega',
+  //   name: 'Entangled States',
+  //   symbol: '🍌',
+  //   description: '<h3>Artist: Niels Einstein</h3>' +
+  //     '<img src="./assets/demo-exhibit-pictures-ai/5.webp" alt="Entangled States Installation" width="300" height="auto" />\n\n' +
+  //     '<p>A provocative installation featuring two separate rooms in different parts of the gallery that are connected ' +
+  //     'through technology. Actions in one room cause immediate reactions in the other, defying our classical understanding ' +
+  //     'of cause and effect. The banana symbol serves as a whimsical reference to quantum absurdity.</p>\n' +
+  //     '<p>Visitors collaborate unknowingly with strangers, creating synchronized light patterns and sound compositions ' +
+  //     'that evolve based on collective behavior. The piece explores connection, causality, and the invisible threads ' +
+  //     'that bind seemingly separate systems.</p>\n' +
+  //     '<p style="text-align:left"><strong>Medium:</strong> Custom sensors, fiber optics, real-time data transmission, responsive environments</p>\n' +
+  //     '<ul><li>Winner of the Quantum Art Prize</li><li>Installations in New York and Tokyo simultaneously</li></ul>',
+  //   position: { x: 55, y: 55 },
+  //   velocity: { x: 0.01, y: 0.01 },
+  //   size: 60,
+  //   color: '#9b59b6'
+  // },
 ]
 
 // DOM references
