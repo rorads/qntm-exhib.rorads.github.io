@@ -8,9 +8,9 @@ let audioSource: AudioBufferSourceNode | null = null;
 let isMuted: boolean = true; // Start muted
 
 // Display an alert only if the user is on iOS Chrome or iOS Safari
-if (!!navigator.userAgent.match('CriOS') || !!navigator.userAgent.match('Safari')) {
-  alert(navigator.userAgent);
-}
+// if (!!navigator.userAgent.match('CriOS') || !!navigator.userAgent.match('Safari')) {
+//   alert(navigator.userAgent);
+// }
 
 // Quantum symbol definitions
 const quantumSymbols: QuantumSymbol[] = [
@@ -213,7 +213,7 @@ function createSymbols() {
 // Animation of symbols
 function animateSymbols() {
   // Velocity scaling for debugging (1 = normal speed)
-  const velocityScale = 10;
+  const velocityScale = 1;
   
   // Detect if user is on iOS Chrome or iOS Safari
   const isIOSChrome = !!navigator.userAgent.match('CriOS');
