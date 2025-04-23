@@ -219,7 +219,7 @@ function animateSymbols() {
     // Define a smaller bottom boundary for iOS Chrome to account for its interface elements
     // iOS Chrome has a navigation bar at the bottom that takes up more space than other browsers
     // Using 85% instead of 90% prevents symbols from disappearing behind this UI element
-    const bottomOffset = isIOSChrome ? 80 : 90;
+    const bottomOffset = isIOSChrome || isIOSSafari ? 80 : 90;
     quantumSymbols.forEach(symbol => {
         const symbolElement = document.getElementById(symbol.id);
         // Update position based on velocity (with scaling)
