@@ -98,7 +98,7 @@ body {
 
 .modal-content p {
   margin: 0.5em 0; /* Adjust spacing as needed */
-  text-align: centre; /* Justify the paragraph text */
+  text-align: left; /* Justify the paragraph text */
 }
 
 .modal-content ul {
