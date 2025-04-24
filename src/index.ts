@@ -437,13 +437,20 @@ function createAboutButton() {
     event.stopPropagation();
     openModal({
       title: 'About',
-      content: 'This is an exhibition walkthrough website, optimized for any device, built by Rory Scott (<a href="https://rorads.github.io" target="_blank">rorads.github.io</a>). ' +
-        'It showcases quantum-inspired art installations through interactive floating symbols.\n\n' +
-        'The soundtrack accompanying the exhibition is a sonification of Rabi cycle data using FM synthesis. ' +
-        'The Rabi cycle represents the cyclic behavior of a two-level quantum system in the presence of an oscillatory driving field. ' +
-        'The full sonification tool can be found at <a href="https://xy-sonification.streamlit.app/" target="_blank">xy-sonification.streamlit.app</a>.\n\n' +
-        'The source code for this project is available on GitHub: ' +
-        '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">github.com/rorads/qntm-exhib.rorads.github.io</a>'
+      content: '<p><strong>Dates:</strong> 16th May - 26th May</p>' +
+        '<p><strong>Opening hours:</strong> 11:30 - 15:30</p>' +
+        '<p><strong>Event Link:</strong> <a href="https://www.eventbrite.co.uk/e/quantum-playground-tickets-1304066330499" target="_blank">Quantum Playground Tickets</a></p>' +
+        '<p>Quantum playground is a free event that offers a hands-on, engaging experience where you can explore an artistic interpretation of quantum technologies. Through interactive installations, immersive light displays, dynamic soundscapes, and gamified elements, visitors will have the chance to "play" with quantum principles in an intuitive way.</p>' +
+        '<p>By making complex ideas accessible and fun, the exhibition aims to bring attendees a face-to-face with quantum technology and spark curiosity. Whether you\'re a curious passerby or a science enthusiast, this exhibition promises a thought-provoking, hands-on adventure into the world of quantum innovation. Don\'t miss the opportunity to engage, learn, and be inspired!</p>' +
+        '<p>This event was made possible by the Scottish Funding Council\'s Alliance for Research Challenge in Quantum Technologies, in partnership with the University of Glasgow.</p>' +
+        '<h3>About this site</h3>' +
+        '<p>This is an exhibition walkthrough website, optimized for any device, built by Rory Scott (<a href="https://rorads.github.io" target="_blank">rorads.github.io</a>). ' +
+        'It showcases quantum-inspired art installations through interactive floating symbols.</p>' +
+        '<p>The soundtrack accompanying the exhibition is a sonification of Rabi cycle data using FM synthesis. ' +
+        'The Rabi cycle represents the cyclic behaviour of a two-level quantum system in the presence of an oscillatory driving field.</p>' +
+        '<p>The full sonification tool can be found at <a href="https://xy-sonification.streamlit.app/" target="_blank">xy-sonification.streamlit.app</a>.</p>' +
+        '<p>The source code for this project is available on GitHub: ' +
+        '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">github.com/rorads/qntm-exhib.rorads.github.io</a></p>'
     });
   });
   
