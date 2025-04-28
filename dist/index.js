@@ -50,8 +50,7 @@ const quantumSymbols = [
         symbol: '📊',
         description: '<h3>Artist: Rory Scott</h3>' +
             '<img src="./assets/spectrogram.png" alt="Data Sonification Playground" width="300" height="auto" />\n\n' +
-            '<p>There is no way for a human to ever hear quantum oscillations directly, but through sonification, we can make them audible. Moving from Sine Wave through to Euclidean Distance, we can increase the complexity and abstractness of the sound we hear.</p>' +
-            '<p>The Data Sonification Playground is an interactive web application that transforms quantum data into sound. Built using Python and Streamlit, it allows users to explore different sonification techniques and parameters in real-time, creating a bridge between quantum physics and auditory experience.</p>' +
+            '<p>The Data Sonification Playground is an interactive web application that transforms quantum data into sound. Built using Python and Streamlit, it allows users to explore different sonification techniques and parameters, creating a bridge between quantum physics and auditory experience.</p>' +
             '<p>These sounds trace Rabi oscillations in the pentacene triplet level, following microsecond-scale swings in optical contrast as the molecule\'s spin state coherently flips between ground and excited triplet configurations. Through bespoke sonification techniques, those quantum pulses become immersive soundscapes—audible echoes of invisible oscillations—that invite listeners to feel the hidden rhythm of light–matter interaction in this exhibition.</p>' +
             '<p><strong>Medium:</strong> Interactive Web Dashboard, Python, Streamlit</p>' +
             '<h4>Artist Bio</h4>' +
