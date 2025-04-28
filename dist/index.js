@@ -68,8 +68,8 @@ const quantumSymbols = [
         name: 'Quantum Laser',
         symbol: '<img src="./assets/custom_laswer_emoji.svg" alt="Laser" width="75" height="75" />',
         description: '<h3>Artist: Libby</h3>' +
-            '<img src="./assets/demo-exhibit-pictures-ai/placeholder.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
-            '<p>Coming soon...</p>',
+            '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
+            '<p>Lib L blends the higly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>',
         position: { x: 50, y: 50 },
         velocity: { x: 0.01, y: 0.01 },
         size: 60,
@@ -108,7 +108,7 @@ const quantumSymbols = [
             '<p>"Harvest Now, Decrypt Later" is a game that puts the player in the role of a hacker tasked with harvesting data. You will hop between different organisation and choose which data to steal from them. Experts predict Q-Day will be with us in 5-30 years. Will the data you choose to harvest be of any use in that time?</p>' +
             '<p><strong>Medium:</strong> Interactive Game</p>' +
             '<h4>Artist Bio</h4>' +
-            '<p>Darren Robertson is a game designer and developer focused on creating experiences that explore complex technological concepts through accessible gameplay. Visit more of his work at: <a href="https://dobertson.itch.io" target="_blank">dobertson.itch.io</a></p>',
+            '<p>Darren is a reformed computer nerd from Ayrshire. He has a background in developing very serious web applications for a multinational corporation. When he discovered he has agency in this life he got into making computer games, his actual passion. However, realising that he could not sit at the computer all day like he had most of his life, he copied his dad and started an apprenticeship to become an electrician. Once qualified he hopes he\'ll have more time to work on his magnum opus. Visit more of his work at: <a href="https://dobertson.itch.io" target="_blank">dobertson.itch.io</a></p>',
         position: { x: 65, y: 45 },
         velocity: { x: -0.04, y: 0.02 },
         size: 60,
