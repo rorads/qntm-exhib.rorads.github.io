@@ -245,15 +245,10 @@ function animateSymbols() {
   const isIOSSafari = !!navigator.userAgent.match('Safari');
 
   // Define different bottom boundaries based on browser
-  // iOS Chrome has a larger navigation bar at the bottom that takes up more space
-  // iOS Safari has a smaller navigation bar but still needs adjustment
-  // Using adjusted percentages prevents symbols from disappearing behind UI elements
   const bottomOffset = isIOSChrome ? 80 : (isIOSSafari ? 85 : 90);
 
-  
+  // First update all positions
   quantumSymbols.forEach(symbol => {
-    const symbolElement = document.getElementById(symbol.id) as HTMLDivElement;
-    
     // Update position based on velocity (with scaling)
     symbol.position.x += symbol.velocity.x * velocityScale;
     symbol.position.y += symbol.velocity.y * velocityScale;
@@ -267,10 +262,75 @@ function animateSymbols() {
     if (symbol.position.y <= 0 || symbol.position.y >= bottomOffset) {
       symbol.velocity.y *= -1;
     }
+  });
+
+  // Then check for collisions
+  for (let i = 0; i < quantumSymbols.length; i++) {
+    const symbol1 = quantumSymbols[i];
+    const element1 = document.getElementById(symbol1.id) as HTMLDivElement;
     
-    // Apply new position
-    symbolElement.style.left = `${symbol.position.x}%`;
-    symbolElement.style.top = `${symbol.position.y}%`;
+    if (!element1) {
+      console.warn(`Element not found for symbol ${symbol1.id}`);
+      continue;
+    }
+    
+    for (let j = i + 1; j < quantumSymbols.length; j++) {
+      const symbol2 = quantumSymbols[j];
+      const element2 = document.getElementById(symbol2.id) as HTMLDivElement;
+      
+      if (!element2) {
+        console.warn(`Element not found for symbol ${symbol2.id}`);
+        continue;
+      }
+      
+      // Calculate distance between symbols
+      const dx = symbol1.position.x - symbol2.position.x;
+      const dy = symbol1.position.y - symbol2.position.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      // Use a fixed collision radius that's appropriate for the display size
+      const collisionRadius = 4; // This is a percentage of the viewport
+      
+      if (distance < collisionRadius) {
+        // Collision response - elastic collision
+        const angle = Math.atan2(dy, dx);
+        const sin = Math.sin(angle);
+        const cos = Math.cos(angle);
+        
+        // Rotate velocities
+        const vx1 = symbol1.velocity.x * cos + symbol1.velocity.y * sin;
+        const vy1 = symbol1.velocity.y * cos - symbol1.velocity.x * sin;
+        const vx2 = symbol2.velocity.x * cos + symbol2.velocity.y * sin;
+        const vy2 = symbol2.velocity.y * cos - symbol2.velocity.x * sin;
+        
+        // Swap velocities
+        symbol1.velocity.x = vx2 * cos - vy1 * sin;
+        symbol1.velocity.y = vy1 * cos + vx2 * sin;
+        symbol2.velocity.x = vx1 * cos - vy2 * sin;
+        symbol2.velocity.y = vy2 * cos + vx1 * sin;
+        
+        // Move symbols apart to prevent sticking
+        const overlap = collisionRadius - distance;
+        const moveX = (overlap * cos) / 2;
+        const moveY = (overlap * sin) / 2;
+        
+        symbol1.position.x += moveX;
+        symbol1.position.y += moveY;
+        symbol2.position.x -= moveX;
+        symbol2.position.y -= moveY;
+      }
+    }
+  }
+
+  // Finally update all DOM elements
+  quantumSymbols.forEach(symbol => {
+    const symbolElement = document.getElementById(symbol.id) as HTMLDivElement;
+    if (symbolElement) {
+      symbolElement.style.left = `${symbol.position.x}%`;
+      symbolElement.style.top = `${symbol.position.y}%`;
+    } else {
+      console.warn(`Element not found for symbol ${symbol.id}`);
+    }
   });
   
   requestAnimationFrame(animateSymbols);
