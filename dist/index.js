@@ -45,6 +45,30 @@ const quantumSymbols = [
         color: '#3498db'
     },
     {
+        id: 'rory',
+        name: 'Quantum Sonification',
+        symbol: '📊',
+        description: '<h3>Artist: Rory Scott</h3>' +
+            '<img src="./assets/Rory_sonification.png" alt="Quantum Sonification Installation" width="300" height="auto" />\n\n' +
+            '<p>Coming soon...</p>',
+        position: { x: 30, y: 60 },
+        velocity: { x: -0.02, y: 0.03 },
+        size: 60,
+        color: '#1abc9c'
+    },
+    {
+        id: 'libby',
+        name: 'Quantum Laser',
+        symbol: '<img src="./assets/custom_laswer_emoji.svg" alt="Laser" width="75" height="75" />',
+        description: '<h3>Artist: Libby</h3>' +
+            '<img src="./assets/demo-exhibit-pictures-ai/placeholder.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
+            '<p>Coming soon...</p>',
+        position: { x: 50, y: 50 },
+        velocity: { x: 0.01, y: 0.01 },
+        size: 60,
+        color: '#ff0000'
+    },
+    {
         id: 'matty',
         name: 'Connection',
         symbol: '🍻',
