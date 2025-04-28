@@ -289,7 +289,7 @@ function animateSymbols() {
       const distance = Math.sqrt(dx * dx + dy * dy);
       
       // Use a fixed collision radius that's appropriate for the display size
-      const collisionRadius = 4; // This is a percentage of the viewport
+      const collisionRadius = 5; // This is a percentage of the viewport
       
       if (distance < collisionRadius) {
         // Collision response - elastic collision
