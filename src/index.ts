@@ -607,7 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Start teleportation timer
   function scheduleNextTeleport() {
-    const delay = Math.random() * 5000 + 5000; // Random delay between 5-10 seconds
+    const delay = Math.random() * 10000 + 10000; // Random delay between 10-20 seconds
     setTimeout(() => {
       teleportSymbol();
       scheduleNextTeleport(); // Schedule next teleportation
