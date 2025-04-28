@@ -14,16 +14,18 @@
     </radialGradient>
   </defs>
 
-  <!-- Laser pointer base -->
-  <rect x="4" y="28" width="16" height="8"
-        rx="4" ry="4"
-        fill="#666" stroke="#333" stroke-width="2"/>
+  <g transform="rotate(-45 37.5 37.5)">
+    <!-- Laser pointer base -->
+    <rect x="4" y="28" width="16" height="8"
+          rx="4" ry="4"
+          fill="#666" stroke="#333" stroke-width="2"/>
 
-  <!-- Straight horizontal beam -->
-  <rect x="20" y="30" width="40" height="4"
-        fill="#ff0000"/>
+    <!-- Straight horizontal beam -->
+    <rect x="20" y="30" width="40" height="4"
+          fill="#ff0000"/>
 
-  <!-- Flare at the beam’s end -->
-  <circle cx="60" cy="32" r="10"
-          fill="url(#flareGradient)"/>
+    <!-- Flare at the beam’s end -->
+    <circle cx="60" cy="32" r="10"
+            fill="url(#flareGradient)"/>
+  </g>
 </svg>

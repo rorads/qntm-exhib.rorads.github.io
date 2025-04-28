@@ -30,7 +30,7 @@ function getAdaptiveCollisionRadius(): number {
   return MIN_RADIUS + t * (MAX_RADIUS - MIN_RADIUS);
 }
 
-const VELOCITY_SCALE = 8;
+const VELOCITY_SCALE = 1;
 
 // Audio management variables
 let audioContext: AudioContext | null = null;
@@ -91,7 +91,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'libby',
     name: 'Quantum Laser',
-    symbol: '<img src="./assets/custom_laswer_emoji.svg" alt="Laser" width="75" height="75" />',
+    symbol: '<img src="./assets/custom_laser_emoji.svg" alt="Laser" width="60" height="75" />',
     description: '<h3>Artist: Libby</h3>' +
       '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
       '<p>Lib L blends the higly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>',
