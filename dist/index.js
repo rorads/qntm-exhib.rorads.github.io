@@ -8,6 +8,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import './styles.css';
+/**
+ * Calculate an adaptive collision radius (as a percentage of the viewport
+ * coordinates used throughout this file).
+ *
+ * The width/height distortion that appears on tall, narrow viewports (mobile
+ * portrait) means that a fixed radius expressed in percentage of the
+ * *viewport width* becomes too small, resulting in missed collisions.  To
+ * counter this we grow the radius as the aspect-ratio decreases:
+ *
+ *   • ratio ≥ 1   →  5 %  (default previously used)
+ *   • ratio = 0.25 → 15 % (width is 25 % of height)
+ *
+ * The growth is linear between the two limits and capped at the extremes.
+ */
+function getAdaptiveCollisionRadius() {
+    const MIN_RATIO = 0.25; // width / height threshold at which we reach max radius
+    const MIN_RADIUS = 5; // % (for square / landscape screens)
+    const MAX_RADIUS = 10; // % (for tall, narrow screens)
+    const ratio = window.innerWidth / window.innerHeight;
+    // Clamp ratio so that very wide screens don't reduce the radius and very
+    // tall screens don't increase it past the cap.
+    const clampedRatio = Math.min(1, Math.max(ratio, MIN_RATIO));
+    const t = (1 - clampedRatio) / (1 - MIN_RATIO); // 0 → 1 interpolation factor
+    return MIN_RADIUS + t * (MAX_RADIUS - MIN_RADIUS);
+}
+const VELOCITY_SCALE = 8;
 // Audio management variables
 let audioContext = null;
 let audioBuffer = null;
@@ -243,7 +269,7 @@ function createSymbols() {
 // Animation of symbols
 function animateSymbols() {
     // Velocity scaling for debugging (1 = normal speed)
-    const velocityScale = 1;
+    const velocityScale = VELOCITY_SCALE;
     // Detect if user is on iOS Chrome or iOS Safari
     const isIOSChrome = !!navigator.userAgent.match('CriOS');
     const isIOSSafari = !!navigator.userAgent.match('Safari');
@@ -278,35 +304,75 @@ function animateSymbols() {
                 console.warn(`Element not found for symbol ${symbol2.id}`);
                 continue;
             }
-            // Calculate distance between symbols
-            const dx = symbol1.position.x - symbol2.position.x;
-            const dy = symbol1.position.y - symbol2.position.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            // Use a fixed collision radius that's appropriate for the display size
-            const collisionRadius = 5; // This is a percentage of the viewport
-            if (distance < collisionRadius) {
-                // Collision response - elastic collision
-                const angle = Math.atan2(dy, dx);
-                const sin = Math.sin(angle);
-                const cos = Math.cos(angle);
-                // Rotate velocities
-                const vx1 = symbol1.velocity.x * cos + symbol1.velocity.y * sin;
-                const vy1 = symbol1.velocity.y * cos - symbol1.velocity.x * sin;
-                const vx2 = symbol2.velocity.x * cos + symbol2.velocity.y * sin;
-                const vy2 = symbol2.velocity.y * cos - symbol2.velocity.x * sin;
-                // Swap velocities
-                symbol1.velocity.x = vx2 * cos - vy1 * sin;
-                symbol1.velocity.y = vy1 * cos + vx2 * sin;
-                symbol2.velocity.x = vx1 * cos - vy2 * sin;
-                symbol2.velocity.y = vy2 * cos + vx1 * sin;
-                // Move symbols apart to prevent sticking
-                const overlap = collisionRadius - distance;
-                const moveX = (overlap * cos) / 2;
-                const moveY = (overlap * sin) / 2;
-                symbol1.position.x += moveX;
-                symbol1.position.y += moveY;
-                symbol2.position.x -= moveX;
-                symbol2.position.y -= moveY;
+            // ------------------------------------------------------------------
+            // Improved circle-to-circle collision detection & response
+            // ------------------------------------------------------------------
+            // Convert the percentage-based coordinates into real pixel values so
+            // that distance calculations are performed in the same unit in both
+            // axes (important when the viewport is not square).
+            const x1Px = (symbol1.position.x / 100) * window.innerWidth;
+            const y1Px = (symbol1.position.y / 100) * window.innerHeight;
+            const x2Px = (symbol2.position.x / 100) * window.innerWidth;
+            const y2Px = (symbol2.position.y / 100) * window.innerHeight;
+            const dxPx = x1Px - x2Px;
+            const dyPx = y1Px - y2Px;
+            const distancePx = Math.sqrt(dxPx * dxPx + dyPx * dyPx);
+            // Radii based on the rendered font size (≈ diameter) of each symbol.
+            const r1 = symbol1.size / 2;
+            const r2 = symbol2.size / 2;
+            const minDistancePx = r1 + r2;
+            if (distancePx < minDistancePx && distancePx > 0) {
+                // Normal vector between centres (unit length)
+                const nx = dxPx / distancePx;
+                const ny = dyPx / distancePx;
+                // ----------------------------------------------------------------
+                // Resolve interpenetration (separate the discs so they just touch)
+                // ----------------------------------------------------------------
+                const overlapPx = minDistancePx - distancePx;
+                const sepPx = overlapPx / 2; // move each symbol half the overlap
+                // Update positions in *pixel* space then convert back to %
+                const newX1Px = x1Px + nx * sepPx;
+                const newY1Px = y1Px + ny * sepPx;
+                const newX2Px = x2Px - nx * sepPx;
+                const newY2Px = y2Px - ny * sepPx;
+                symbol1.position.x = (newX1Px / window.innerWidth) * 100;
+                symbol1.position.y = (newY1Px / window.innerHeight) * 100;
+                symbol2.position.x = (newX2Px / window.innerWidth) * 100;
+                symbol2.position.y = (newY2Px / window.innerHeight) * 100;
+                // ----------------------------------------------------------------
+                // Perfectly elastic collision of two discs with equal mass
+                // ----------------------------------------------------------------
+                // Convert percentage velocities to pixels / frame
+                const v1xPx = (symbol1.velocity.x / 100) * window.innerWidth;
+                const v1yPx = (symbol1.velocity.y / 100) * window.innerHeight;
+                const v2xPx = (symbol2.velocity.x / 100) * window.innerWidth;
+                const v2yPx = (symbol2.velocity.y / 100) * window.innerHeight;
+                // Components of the velocities along the normal
+                const dvx = v1xPx - v2xPx;
+                const dvy = v1yPx - v2yPx;
+                const relVelAlongNormal = dvx * nx + dvy * ny;
+                // Only apply response if the circles are moving towards each other
+                if (relVelAlongNormal < 0) {
+                    const v1n = v1xPx * nx + v1yPx * ny;
+                    const v2n = v2xPx * nx + v2yPx * ny;
+                    // Exchange the normal components (perfectly elastic, equal mass)
+                    const v1nAfter = v2n;
+                    const v2nAfter = v1n;
+                    // Tangential components remain unchanged
+                    const v1tX = v1xPx - v1n * nx;
+                    const v1tY = v1yPx - v1n * ny;
+                    const v2tX = v2xPx - v2n * nx;
+                    const v2tY = v2yPx - v2n * ny;
+                    const newV1xPx = v1tX + v1nAfter * nx;
+                    const newV1yPx = v1tY + v1nAfter * ny;
+                    const newV2xPx = v2tX + v2nAfter * nx;
+                    const newV2yPx = v2tY + v2nAfter * ny;
+                    // Convert back to percentage velocities
+                    symbol1.velocity.x = (newV1xPx / window.innerWidth) * 100;
+                    symbol1.velocity.y = (newV1yPx / window.innerHeight) * 100;
+                    symbol2.velocity.x = (newV2xPx / window.innerWidth) * 100;
+                    symbol2.velocity.y = (newV2yPx / window.innerHeight) * 100;
+                }
             }
         }
     }
