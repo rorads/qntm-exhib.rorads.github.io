@@ -494,6 +494,43 @@ window.addEventListener('click', (event) => {
   }
 });
 
+// Function to teleport a random symbol
+function teleportSymbol() {
+  // Select a random symbol
+  const randomIndex = Math.floor(Math.random() * quantumSymbols.length);
+  const symbol = quantumSymbols[randomIndex];
+  const symbolElement = document.getElementById(symbol.id) as HTMLDivElement;
+  
+  if (!symbolElement) return;
+  
+  // Store original position for animation
+  const originalX = symbol.position.x;
+  const originalY = symbol.position.y;
+  
+  // Add teleportation class for animation
+  symbolElement.classList.add('teleporting');
+  
+  // Animate down and then up to centre
+  symbolElement.style.transition = 'all 0.5s ease-in-out';
+  symbolElement.style.left = '50%';
+  symbolElement.style.top = '100%';
+  
+  // After sliding down, slide up to centre
+  setTimeout(() => {
+    symbolElement.style.top = '50%';
+    
+    // Update the symbol's position in the data structure
+    symbol.position.x = 50;
+    symbol.position.y = 50;
+    
+    // Remove teleportation class after animation completes
+    setTimeout(() => {
+      symbolElement.classList.remove('teleporting');
+      symbolElement.style.transition = '';
+    }, 500);
+  }, 500);
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   // Verify DOM elements exist before continuing
@@ -507,6 +544,16 @@ document.addEventListener('DOMContentLoaded', () => {
   createMuteButton(); // Add mute button
   createAboutButton(); // Add about button
   initializeAudio();  // Initialize audio
+  
+  // Start teleportation timer
+  function scheduleNextTeleport() {
+    const delay = Math.random() * 5000 + 5000; // Random delay between 5-10 seconds
+    setTimeout(() => {
+      teleportSymbol();
+      scheduleNextTeleport(); // Schedule next teleportation
+    }, delay);
+  }
+  scheduleNextTeleport();
   
   // Add this for debugging
   console.log("Quantum Symbols initialized");

@@ -45,6 +45,12 @@ body {
   transform: scale(1.2);
 }
 
+.quantum-symbol.teleporting {
+  transform: scale(1.2);
+  filter: brightness(1.5) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  z-index: 1000;
+}
+
 .modal {
   position: fixed;
   z-index: 1000;
