@@ -565,16 +565,17 @@ function createAboutButton() {
                 '<p><strong>Opening hours:</strong> 11:30 - 15:30</p>' +
                 '<p><strong>Event Link:</strong> <a href="https://www.eventbrite.co.uk/e/quantum-playground-tickets-1304066330499" target="_blank">Quantum Playground Tickets</a></p>' +
                 '<p>Quantum playground is a free event that offers a hands-on, engaging experience where you can explore an artistic interpretation of quantum technologies. Through interactive installations, immersive light displays, dynamic soundscapes, and gamified elements, visitors will have the chance to "play" with quantum principles in an intuitive way.</p>' +
-                '<p>By making complex ideas accessible and fun, the exhibition aims to bring attendees a face-to-face with quantum technology and spark curiosity. Whether you\'re a curious passerby or a science enthusiast, this exhibition promises a thought-provoking, hands-on adventure into the world of quantum innovation. Don\'t miss the opportunity to engage, learn, and be inspired!</p>' +
-                '<p>This event was made possible by the Scottish Funding Council\'s Alliance for Research Challenge in Quantum Technologies, in partnership with the University of Glasgow.</p>' +
+                '<p>By making complex ideas accessible and fun, the exhibition aims to bring attendees a face-to-face with quantum technology and spark curiosity. Whether you\'re a curious passer-by or a science enthusiast, this exhibition promises a thought-provoking, hands-on adventure into the world of quantum innovation. Don\'t miss the opportunity to engage, learn, and be inspired!</p>' +
+                '<p>This event was organised by <a href="https://www.linkedin.com/in/alistair-inglis-49aa69179/" target="_blank">Dr. Alistair Inglis</a>, a Postdoctoral Research Associate at the University of Glasgow. He is an award-winning science communicator, passionate about the use of art as a vehicle for public engagement of science. His research seeks to examine the spintronic and photonic properties of molecular materials, leading to applications in quantum technologies such as quantum information processing, and quantum sensing.</p>' +
+                '<img src="./assets/quantum-arc-logo.webp" alt="Quantum ARC Logo" width="200" height="auto" style="background-color: white; padding: 5px; border-radius: 5px;" />' +
+                '<p>This event was made possible by the <a href="https://quantum-tech-alliance.co.uk/" target="_blank">Quantum ARC</a> and the <a href="https://www.sfc.ac.uk/" target="_blank">Scottish Funding Council</a>, in partnership with the University of Glasgow.</p>' +
+                '<p>In addition to the artists\' contributions, Alistair would like to thank Soundplay Projects, Boomerang Woodworking, and Rory Scott for their support in making the exhibition possible.</p>' +
                 '<h3>About this site</h3>' +
-                '<p>This is an exhibition walkthrough website, optimized for any device, built by Rory Scott (<a href="https://rorads.github.io" target="_blank">rorads.github.io</a>). ' +
+                '<p>This is an exhibition walkthrough website, optimized for any device, built by <a href="https://www.linkedin.com/in/radscott/" target="_blank">Rory Scott</a>. ' +
                 'It showcases quantum-inspired art installations through interactive floating symbols.</p>' +
-                '<p>The soundtrack accompanying the exhibition is a sonification of Rabi cycle data using FM synthesis. ' +
-                'The Rabi cycle represents the cyclic behaviour of a two-level quantum system in the presence of an oscillatory driving field.</p>' +
-                '<p>The full sonification tool can be found at <a href="https://xy-sonification.streamlit.app/" target="_blank">xy-sonification.streamlit.app</a>.</p>' +
-                '<p>The source code for this project is available on GitHub: ' +
-                '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">github.com/rorads/qntm-exhib.rorads.github.io</a></p>'
+                '<p>The soundtrack accompanying the exhibition is a sonification of Rabi cycle data using FM synthesis. See the 📊 symbol for the full sonification tool. ' +
+                '<p>The source code for this project is available on ' +
+                '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">Rory\'s GitHub</a>, and writings about this and other projects are available on <a href="https://rorads.github.io" target="_blank">Rory\'s website</a></p>.'
         });
     });
     document.body.appendChild(aboutButton);
