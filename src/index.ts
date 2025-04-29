@@ -94,7 +94,12 @@ const quantumSymbols: QuantumSymbol[] = [
     symbol: '<img src="./assets/custom_laser_emoji.svg" alt="Laser" width="60" height="75" />',
     description: '<h3>Artist: Libby</h3>' +
       '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
-      '<p>Lib L blends the higly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>',
+      '<p>Lib L blends the higly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>' +
+      '<h4>Artist Bio</h4>' +
+      '<p>Lib L is a Glasgow based laser artist, visual artist and lighting designer and founder of Laser-Faire, her practice is rooted in skirting the edges of socially defined boundaries, and warping expectation and space. Manipulating and changing environments through light, and engaging with the interplay of different materials, both physical and ethereal. She works with forms oft considered salacious and perverse and highlighting the elegance she finds within them.</p>' +
+      '<p>She understands lasers not as party novelty but as a multifaceted beauty that with experimentation can drastically shift and change any space.</p>' +
+      '<p>She has brought her lasers to spaces across the UK and EU and has work published in various publications and The Glasgow Women\'s Library.</p>' +
+      '<p>She highlights and utilises the laser\'s purity of light and precision to explore themes and mediums of art, protest, club and collaboration. The laser is a tool to dissect, play and find delicacy in the dangerous.</p>',
     position: { x: 50, y: 50 },
     velocity: { x: 0.01, y: 0.01 },
     size: 60,
