@@ -90,11 +90,11 @@ const quantumSymbols = [
     },
     {
         id: 'libby',
-        name: 'Quantum Laser',
+        name: 'Trapped in Light',
         symbol: '<img src="./assets/custom_laser_emoji.svg" alt="Laser" width="60" height="75" />',
-        description: '<h3>Artist: Libby</h3>' +
+        description: '<h3>Artist: Lib L</h3>' +
             '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
-            '<p>Lib L blends the higly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>' +
+            '<p>Lib L blends the highly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>' +
             '<h4>Artist Bio</h4>' +
             '<p>Lib L is a Glasgow based laser artist, visual artist and lighting designer and founder of Laser-Faire, her practice is rooted in skirting the edges of socially defined boundaries, and warping expectation and space. Manipulating and changing environments through light, and engaging with the interplay of different materials, both physical and ethereal. She works with forms oft considered salacious and perverse and highlighting the elegance she finds within them.</p>' +
             '<p>She understands lasers not as party novelty but as a multifaceted beauty that with experimentation can drastically shift and change any space.</p>' +
@@ -152,94 +152,19 @@ const quantumSymbols = [
             '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="The Black Box Installation" width="300" height="auto" />\n\n' +
             '<p>What does \'quantum\' mean to you?</p>' +
             '<p>This sound piece plays an infinite loop of voice notes from non-experts answering that question. Housed inside a literal black box, it reflects how the field of quantum physics is often seen: mysterious, sealed off and a little intimidating. And yet, somehow, we\'ve all heard the word.</p>' +
-            '<p>The word quantum has become part of our everyday language—appearing in music, psychology, philosophy, art, spirituality, science fiction, film, wellness, and beyond. This cultural spread has been shaped less by physicists and more by artists, writers, filmmakers, and thinkers—those who reinterpret science through metaphor, story, and imagination.</p>' +
+            '<p>The word quantum has become part of our everyday language—appearing in music, psychology, philosophy, art, spirituality, science fiction, film, wellness, and beyond. This cultural spread has been shaped less by physicists and more by artists, writers, film-makers, and thinkers—those who reinterpret science through metaphor, story, and imagination.</p>' +
             '<p>Of course, there\'s something a bit ironic here. While this exhibition continues the tradition of non-experts reinterpreting quantum through artistic imagination, it also reflects a gap in how the field has been communicated. In a world where science can feel distant, overly complex, or even elitist, there\'s room (and a need) for more generous, open dialogue between scientists and the public...especially when complex scientific language like quantum terminology is sometimes used or communicated in ways that can mislead or have unintended consequences.</p>' +
             '<p>Still, the concept has become wonderfully malleable. It\'s been stretched and abstracted; it now means everything… and nothing. But across all these interpretations, one thing tends to remain: a sense of ungraspability. The word quantum gestures toward something that resists certainty—something fundamentally unknowable, just out of reach. Perhaps that\'s why it resonates so deeply: it mirrors our experience of reality in some way.</p>' +
             '<p>This piece invites listeners to reflect on their own interpretation of the term. Some voice notes are funny, some thoughtful, some poetic or uncertain. But together, they suggest something bigger: that reality is more complex than it seems. That not knowing is okay. That curiosity is enough.</p>' +
             '<p><strong>Medium:</strong> Sound installation, headset, recycled wood</p>' +
-            '<p><em>Black box and headset stand made by Boomerang Woodworking, a community Workshop promoting wellbeing, creativity and skills development through woodwork with the reuse of recycled wood at the heart of their philosophy.</em></p>' +
+            '<p><em>Black box and headset stand made by Boomerang Woodworking, a community Workshop promoting well-being, creativity and skills development through woodwork with the reuse of recycled wood at the heart of their philosophy.</em></p>' +
             '<h4>Artist Bio</h4>' +
             '<p>Ana (she/her) holds a PhD in Political Communication and is passionate about making academic research more accessible to a wider audience. She is also an electronic music producer (under the alias lunattic), and radio host at local community radio station Radio Buena Vida. Over the past couple of years, she has facilitated music production workshops with a focus on accessibility and collaboration. Her creative work—whether through music, radio, or teaching—is driven by a commitment to playfulness and experimentation.</p>',
         position: { x: 40, y: 70 },
         velocity: { x: 0.03, y: -0.02 },
         size: 60,
         color: '#2ecc71'
-    },
-    // {
-    //   id: 'h',
-    //   name: 'Constant Flux',
-    //   symbol: 'ℎ',
-    //   description: '<h3>Artist: Quanta Bohr</h3>' +
-    //     '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Constant Flux Installation" width="300" height="auto" />\n\n' +
-    //     '<p>This kinetic sculpture uses magnetically suspended elements that never quite settle into a fixed position. ' +
-    //     'The seemingly chaotic movements follow precise mathematical formulas derived from quantum field theory, ' +
-    //     'creating a mesmerizing dance of metal and light that appears both random and ordered.</p>' +
-    //     '<p>The sculpture plays with the concept of discrete energy states, with subtle LED elements that shift in brightness ' +
-    //     'only at specific intervals, never between them - a physical manifestation of quantum leaps.</p>' +
-    //     '<p><strong>Medium:</strong> Polished aluminum, neodymium magnets, microcontrollers, LEDs</p>' +
-    //     '<ul><li>Commissioned by CERN for their public gallery</li><li>Tour includes Tokyo Science Museum and Smithsonian</li></ul>',
-    //   position: { x: 65, y: 45 },
-    //   velocity: { x: -0.04, y: 0.02 },
-    //   size: 60,
-    //   color: '#e74c3c'
-    // },
-    // {
-    //   id: 'sigma',
-    //   name: 'Matrix Reflections',
-    //   symbol: 'σ',
-    //   description: '<h3>Artist: Pauli Schrödinger</h3>' +
-    //     '<img src="./assets/demo-exhibit-pictures-ai/3.webp" alt="Matrix Reflections Installation" width="300" height="auto" />\n\n' +
-    //     '<p>A room of perfectly aligned mirrors creates infinite reflections that transform visitors into multi-dimensional beings. ' +
-    //     'Special dichroic filters cause the reflections to split into different spectra based on viewing angle, ' +
-    //     'representing the multi-state nature of quantum information.</p>' +
-    //     '<p>As viewers move through the space, their reflections appear to make decisions independent of the original, ' +
-    //     'suggesting parallel realities coexisting within our own. The installation creates a sense of disorientation that ' +
-    //     'forces confrontation with our limited perception of dimensions.</p>' +
-    //     '<p><strong>Medium:</strong> Custom mirrors, dichroic glass, geometric framework, programmed lighting</p>' +
-    //     '<ul><li>Current exhibition at Guggenheim</li><li>Featured in "Quantum Aesthetics" documentary</li></ul>',
-    //   position: { x: 40, y: 70 },
-    //   velocity: { x: 0.03, y: -0.02 },
-    //   size: 60,
-    //   color: '#2ecc71'
-    // },
-    // {
-    //   id: 'delta',
-    //   name: 'Uncertainty Principle',
-    //   symbol: 'Δ',
-    //   description: '<h3>Artist: Max Feynman</h3>' +
-    //     '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="Uncertainty Principle Installation" width="300" height="auto" />\n\n' +
-    //     '<p>This interactive installation features a series of delicate pendulums whose movements are influenced by subtle ' +
-    //     'air currents created by visitors. The more closely one attempts to observe the pendulums, the more one\'s breath ' +
-    //     'and body heat disrupt their patterns, making precise measurement impossible.</p>' +
-    //     '<p>Overhead cameras track the pendulum movements, generating real-time visualizations that demonstrate the ' +
-    //     'mathematical beauty of uncertainty. The piece comments on the futility of perfect knowledge and the ' +
-    //     'observer effect inherent in all systems.</p>' +
-    //     '<p><strong>Medium:</strong> Suspended glass pendulums, thermal sensors, generative projection mapping</p>' +
-    //     '<ul><li>Published in Art & Physics Quarterly</li><li>Acquired by Tate Modern permanent collection</li></ul>',
-    //   position: { x: 75, y: 65 },
-    //   velocity: { x: -0.02, y: -0.03 },
-    //   size: 60,
-    //   color: '#f39c12'
-    // },
-    // {
-    //   id: 'omega',
-    //   name: 'Entangled States',
-    //   symbol: '🍌',
-    //   description: '<h3>Artist: Niels Einstein</h3>' +
-    //     '<img src="./assets/demo-exhibit-pictures-ai/5.webp" alt="Entangled States Installation" width="300" height="auto" />\n\n' +
-    //     '<p>A provocative installation featuring two separate rooms in different parts of the gallery that are connected ' +
-    //     'through technology. Actions in one room cause immediate reactions in the other, defying our classical understanding ' +
-    //     'of cause and effect. The banana symbol serves as a whimsical reference to quantum absurdity.</p>' +
-    //     '<p>Visitors collaborate unknowingly with strangers, creating synchronized light patterns and sound compositions ' +
-    //     'that evolve based on collective behavior. The piece explores connection, causality, and the invisible threads ' +
-    //     'that bind seemingly separate systems.</p>' +
-    //     '<p style="text-align:left"><strong>Medium:</strong> Custom sensors, fiber optics, real-time data transmission, responsive environments</p>' +
-    //     '<ul><li>Winner of the Quantum Art Prize</li><li>Installations in New York and Tokyo simultaneously</li></ul>',
-    //   position: { x: 55, y: 55 },
-    //   velocity: { x: 0.01, y: 0.01 },
-    //   size: 60,
-    //   color: '#9b59b6'
-    // },
+    }
 ];
 // DOM references
 const symbolsContainer = document.getElementById('symbols-container');
