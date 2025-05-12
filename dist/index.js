@@ -47,7 +47,7 @@ let isMuted = true; // Start muted
 const quantumSymbols = [
     {
         id: 'ana1',
-        name: 'Quantum Soundscape',
+        name: 'Soundscape',
         symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/speaker-with-three-sound-waves_1f50a.png" alt="Speaker" width="60" height="60" />',
         description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
             '<img src="./assets/demo-exhibit-pictures-ai/6.webp" alt="Quantum Soundscape Installation" width="300" height="auto" />\n\n' +
