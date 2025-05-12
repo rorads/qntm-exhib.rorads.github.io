@@ -48,7 +48,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'ana1',
     name: 'Quantum Soundscape',
-    symbol: '🔊',
+    symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/speaker-with-three-sound-waves_1f50a.png" alt="Speaker" width="60" height="60" />',
     description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
       '<img src="./assets/demo-exhibit-pictures-ai/6.webp" alt="Quantum Soundscape Installation" width="300" height="auto" />\n\n' +
       '<p>The beautiful hi-fi speakers were handmade by our friends Cameron and Finlay, who also organise the popular dance party \'Coorie Doon\' in Glasgow.</p>' +
@@ -73,7 +73,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'rory',
     name: 'Data Sonification Playground',
-    symbol: '📊',
+    symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/bar-chart_1f4ca.png" alt="Bar Chart" width="60" height="60" />',
     description: '<h3>Artist: Rory Scott</h3>' +
       '<img src="./assets/spectrogram.png" alt="Data Sonification Playground" width="300" height="auto" />\n\n' +
       '<p>The Data Sonification Playground is an interactive web application that transforms quantum data into sound. Built using Python and Streamlit, it allows users to explore different sonification techniques and parameters, creating a bridge between quantum physics and auditory experience.</p>' +
@@ -91,7 +91,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'libby',
     name: 'Trapped in Light',
-    symbol: '<img src="./assets/custom_laser_emoji.svg" alt="Laser" width="60" height="75" />',
+    symbol: '<img src="./assets/custom_laser_emoji.svg" alt="Laser" width="60" height="60" />',
     description: '<h3>Artist: Lib L</h3>' +
       '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Quantum Laser Installation" width="300" height="auto" />\n\n' +
       '<p>Lib L blends the highly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>' +
@@ -108,7 +108,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'matty',
     name: 'Connection',
-    symbol: '🍻',
+    symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/clinking-beer-mugs_1f37b.png" alt="Clinking Beer Mugs" width="60" height="60" />',
     description: '<h3>Artist: Matthew Wasylko</h3>' +
       '<img src="./assets/actual-exhibit-images/matty_depiction_image.png" alt="Connection Installation" width="300" height="auto" />\n\n' +
       '<p><em>Two particles intertwined.</em><br>' +
@@ -116,7 +116,7 @@ const quantumSymbols: QuantumSymbol[] = [
       '<em>Perfectly correlated.</em><br>' +
       '<em>No matter how far apart you move them, they will stay connected.</em></p>' +
       '<p>Connection is a 3D interactive artwork inspired by graphical representations of quantum entanglement. Built using shaders within a 3D graphics framework, the piece explores the dynamic, electric-like space between two bound particles. Their connection is in constant motion—shifting, weaving, and responding to semi-random input within mathematical expressions. Emerging patterns cluster, fold, and overlap, forming new, evolving shapes. Within and across the particles, a continuously excited tessellation blends colour, form, and movement. Though separate, the particles remain perpetually linked, flying together through an otherwise empty space.</p>' +
-      '<p><strong>Medium:</strong> GLSL, THREE.JS, Code/Algorithm, Arduino</p>' +
+      '<p><strong>Medium:</strong> GLSL, THREE.JS, Code/Algorithm, Arduino, Sound</p>' +
       '<h4>Artist Bio</h4>' +
       '<p>Matthew Wasylko is a Glasgow-based creative technologist and multimedia artist working with computational methods across video, audio, photography and digital media. His practice explores the influence of code on both physical and perceptual spaces, focusing on procedural decision-making and generative systems. Rather than imitating traditional forms, Wasylko uses algorithmic processes to shape meaning, emotion and interaction.</p>' + 
       '<p>His work examines the interface between technology and human perception, connecting audiences to the underlying systems that shape both digital and natural worlds. Through his chosen media, he documents his exploration into new systems of expression, structure and experience. Matthew is also taking part in a fundraiser, which you can donate to through this link: <a href="https://www.justgiving.com/page/matthew-wasylko?utm_medium=FR&utm_source=CL&utm_campaign=015" target="_blank">https://www.justgiving.com/page/matthew-wasylko</a></p>',
@@ -128,7 +128,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'darren',
     name: 'Harvest Now, Decrypt Later',
-    symbol: '🌽',
+    symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/ear-of-maize_1f33d.png" alt="Corn" width="60" height="60" />',
     description: '<h3>Artist: Darren Robertson</h3>' +
       '<img src="./assets/demo-exhibit-pictures-ai/2.webp" alt="Harvest Now, Decrypt Later Game" width="300" height="auto" />\n\n' +
       '<p>Are we ready for Q-Day?</p>' +
@@ -147,7 +147,7 @@ const quantumSymbols: QuantumSymbol[] = [
   {
     id: 'ana2',
     name: 'The Black Box',
-    symbol: '∞',
+    symbol: '<img src="https://em-content.zobj.net/source/microsoft/153/permanent-paper-sign_267e.png" alt="Infinity" width="60" height="60" />',
     description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
       '<img src="./assets/demo-exhibit-pictures-ai/4.webp" alt="The Black Box Installation" width="300" height="auto" />\n\n' +
       '<p>What does \'quantum\' mean to you?</p>' +

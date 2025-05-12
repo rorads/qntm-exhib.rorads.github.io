@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="75" height="75"
+     viewBox="0 0 75 75">
+
+  <defs>
+    <!-- Flare gradient at the beam’s end -->
+    <radialGradient id="flareGradient"
+                    cx="60" cy="32" r="10"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#ff6666"/>
+      <stop offset="50%"  stop-color="#ff0000"/>
+      <stop offset="100%" stop-color="rgba(255,0,0,0)"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="rotate(-45 37.5 37.5)">
+    <!-- Laser pointer base -->
+    <rect x="4" y="28" width="16" height="8"
+          rx="4" ry="4"
+          fill="#666" stroke="#333" stroke-width="2"/>
+
+    <!-- Straight horizontal beam -->
+    <rect x="20" y="30" width="40" height="4"
+          fill="#ff0000"/>
+
+    <!-- Flare at the beam’s end -->
+    <circle cx="60" cy="32" r="10"
+            fill="url(#flareGradient)"/>
+  </g>
+</svg>
