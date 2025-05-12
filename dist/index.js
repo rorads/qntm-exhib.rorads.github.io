@@ -60,7 +60,7 @@ const quantumSymbols = [
             '<ul style="text-align:left">' +
             '<li><a href="https://www.musicbroth.org/" target="_blank">Music Broth, instrument library</a></li>' +
             '<li><a href="https://www.instagram.com/boomerangwoodworking/" target="_blank">Boomerang Woodworking</a></li>' +
-            '<li><a href="https://gomi.design/products/gomi-speaker" target="_blank">Gomi speakers</a></li>' +
+            '<li><a href="https://gomi.design/products/gomi-speaker" target="_blank">gomi speakers</a></li>' +
             '<li><a href="https://sonosaurus.com/paulxstretch/" target="_blank">PaulXStretch</a></li>' +
             '<li><a href="https://goodpress.co.uk/products/quantum-listening-by-pauline-oliveros-1" target="_blank">Quantum Listening by Pauline Oliveros</a></li>' +
             '<li><a href="https://linktr.ee/nadia.the.poet?utm_source=linktree_profile_share&ltsid=64beaaed-bc10-45bb-a709-84f0345e7cb0" target="_blank">Nadia Violette</a></li>' +
