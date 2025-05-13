@@ -555,7 +555,7 @@ function createAboutButton() {
         'It showcases quantum-inspired art installations through interactive floating symbols.</p>' +
         '<p>The soundtrack accompanying the exhibition is a sonification of Rabi cycle data using FM synthesis. See the 📊 symbol for the full sonification tool. ' +
         '<p>The source code for this project is available on ' +
-        '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">Rory\'s GitHub</a>, and writings about this and other projects are available on <a href="https://rorads.github.io" target="_blank">Rory\'s website</a></p>.'
+        '<a href="https://github.com/rorads/qntm-exhib.rorads.github.io" target="_blank">Rory\'s GitHub</a>, and writings about this and other projects are available on <a href="https://rorads.github.io" target="_blank">Rory\'s website</a>.</p>'
     });
   });
   
