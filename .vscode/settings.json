@@ -19,5 +19,6 @@
         "voicenote",
         "Wasylko",
         "wellbeing"
-    ]
+    ],
+    "makefile.configureOnOpen": false
 }

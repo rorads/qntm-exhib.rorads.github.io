@@ -541,7 +541,7 @@ function createAboutButton() {
     event.stopPropagation();
     openModal({
       title: 'About',
-      content: '<p><strong>Dates:</strong> 16th May - 26th May</p>' +
+      content: '<p><strong>Dates:</strong> 16th May - 26th May 2025</p>' +
         '<p><strong>Opening hours:</strong> 11:30 - 15:30</p>' +
         '<p><strong>Event Link:</strong> <a href="https://www.eventbrite.co.uk/e/quantum-playground-tickets-1304066330499" target="_blank">Quantum Playground Tickets</a></p>' +
         '<p>Quantum playground is a free event that offers a hands-on, engaging experience where you can explore an artistic interpretation of quantum technologies. Through interactive installations, immersive light displays, dynamic soundscapes, and gamified elements, visitors will have the chance to "play" with quantum principles in an intuitive way.</p>' +
