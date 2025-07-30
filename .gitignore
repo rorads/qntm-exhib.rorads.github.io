@@ -1,3 +1,6 @@
 node_modules/*
 
 drafts/
+
+offline_pictures/*
+!offline_pictures/.gitkeep

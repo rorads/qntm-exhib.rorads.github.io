@@ -7,6 +7,7 @@ The Quantum Symbols project is a minimal and visually striking single-page appli
 - Floating symbols that respond to user interactions.
 - Full-screen modal display for content when symbols are clicked.
 - Visually appealing background graphics that convey a quantum theme with undulating colors and rounded geometric shapes.
+- Cloud-hosted images served from Google Cloud Storage for improved performance and scalability.
 - Built using TypeScript for robust and maintainable code.
 
 ## Project Structure
@@ -16,6 +17,7 @@ The project is organized as follows:
 │ ├── index.ts # Main entry point of the application
 │ ├── styles.css # Styles for the application
 │ ├── types.ts # TypeScript interfaces and types
+│ ├── imageManifest.json # Cloud storage image URL mappings
 │ └── assets
 │ └── background.svg # Background graphic for the application
 ├── public
@@ -57,6 +59,74 @@ The application is deployed and can be accessed at: https://rorads.github.io/qnt
 ## Usage
 - Click on any of the floating symbols to open a modal that displays relevant content.
 - The application is designed to be responsive and should work well on mobile devices.
+
+## Image Management
+
+The application uses Google Cloud Storage to host exhibition images. All images are served from the `exhibition-pictures` bucket and referenced through a JSON manifest.
+
+### Adding or Updating Images
+
+1. **Organise images locally** in the `offline_pictures/` directory:
+   ```
+   offline_pictures/
+   ├── full/           # Full-size images
+   ├── full_thumbs/    # Thumbnail versions
+   └── mains/          # Main artist images used in modals
+   ```
+
+2. **Upload images to Google Cloud Storage** (preserving folder structure):
+   ```bash
+   gsutil -m cp -r offline_pictures/* gs://exhibition-pictures/
+   ```
+
+3. **Generate the image manifest** with public URLs:
+   ```bash
+   # List all images and create URL mappings
+   gsutil ls -r gs://exhibition-pictures/ | grep -E '\.(jpg|jpeg|png)$'
+   ```
+
+4. **Update the JSON manifest** at `src/imageManifest.json` with the new URLs:
+   - Public URL format: `https://storage.googleapis.com/exhibition-pictures/[folder]/[filename]`
+   - URL-encode spaces in filenames (space becomes `%20`)
+   - Organise by folder: `full`, `full_thumbs`, `mains`
+
+5. **Rebuild and test the application**:
+   ```bash
+   npm run build
+   npm start
+   ```
+
+### Removing Images
+
+To remove images from the exhibition:
+
+1. **Delete from local folder** (if still present):
+   ```bash
+   rm offline_pictures/[folder]/[filename]
+   ```
+
+2. **Delete from Google Cloud Storage**:
+   ```bash
+   gsutil rm gs://exhibition-pictures/[folder]/[filename]
+   ```
+
+3. **Regenerate the complete manifest** (recommended approach):
+   - Follow steps 2-5 from "Adding or Updating Images" above
+   - This ensures the manifest stays in sync with available images
+
+### Important Notes
+
+- Always maintain matching filenames between `full/` and `full_thumbs/` directories
+- The `mains/` folder contains the specific artist images referenced in modal content
+- URL encoding is critical for filenames with spaces or special characters
+- Test the application after any image changes to ensure all URLs are accessible
+
+### Bucket Configuration
+
+The `exhibition-pictures` bucket is configured with:
+- **Public read access** - Images are accessible without authentication
+- **Project**: `quantum-exhibition`
+- **Location**: Standard storage class for optimal performance
 
 ## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.

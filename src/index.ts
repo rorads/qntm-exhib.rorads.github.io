@@ -1,5 +1,6 @@
 import './styles.css';
 import { QuantumSymbol, ModalOptions } from './types';
+import imageManifest from './imageManifest.json';
 
 /**
  * Calculate an adaptive collision radius (as a percentage of the viewport
@@ -50,7 +51,7 @@ const quantumSymbols: QuantumSymbol[] = [
     name: 'Soundscape',
     symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/speaker-with-three-sound-waves_1f50a.png" alt="Speaker" width="60" height="60" />',
     description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
-      '<img src="./assets/actual-exhibit-images/ana-soundscape.jpg" alt="Quantum Soundscape Installation" width="300" />\n\n' +
+      `<img src="${imageManifest.mains['ana-soundscape.jpg']}" alt="Quantum Soundscape Installation" width="300" />\n\n` +
       '<p>The exhibition\'s soundscape blends two compositions: an immersive, sustained soundscape inspired by Pauline Oliveros\' concept of Quantum Listening, built from recordings of quantum experiments and sonified data, and featuring poetry by Glasgow-based poet Nadia Violette. This gradually shifts into a lighter, more melodic improvisation created in collaboration with Glasgow-based sound artist <a href="https://www.instagram.com/ross_yokermoon/" target="_blank">Yoker Moon</a>.</p>' +
       '<p>Pauline Oliveros (1930–2016), an influential sound artist and philosopher, developed the idea of the listening effect, which parallels the observer effect in quantum physics, where the act of observing a particle changes the behavior of the particle (remember Schrödinger\'s cat?). As she wrote: "What is heard is changed by listening, and changes the listener."</p>' +
       '<p>I positioned different sound sources in various parts of the space to reflect her idea that "Quantum Listening is listening to more than one reality simultaneously."</p>' +
@@ -79,7 +80,7 @@ const quantumSymbols: QuantumSymbol[] = [
     name: 'Data Sonification Playground',
     symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/bar-chart_1f4ca.png" alt="Bar Chart" width="60" height="60" />',
     description: '<h3>Artist: Rory Scott</h3>' +
-      '<img src="./assets/actual-exhibit-images/rory.jpg" alt="Data Sonification Playground" width="300" />\n\n' +
+      `<img src="${imageManifest.mains['rory.jpg']}" alt="Data Sonification Playground" width="300" />\n\n` +
       '<p>The Data Sonification Playground is an interactive web application that transforms quantum data into sound. Built using Python and Streamlit, it allows users to explore different sonification techniques and parameters, creating a bridge between quantum physics and auditory experience.</p>' +
       '<p>These sounds trace Rabi oscillations in the pentacene triplet level, following microsecond-scale swings in optical contrast as the molecule\'s spin state coherently flips between ground and excited triplet configurations. Through bespoke sonification techniques, those quantum pulses become immersive soundscapes—audible echoes of invisible oscillations—that invite listeners to feel the hidden rhythm of light–matter interaction in this exhibition.</p>' +
       '<p><strong>Medium:</strong> Interactive Web Dashboard, Python, Streamlit</p>' +
@@ -97,7 +98,7 @@ const quantumSymbols: QuantumSymbol[] = [
     name: 'Trapped in Light',
     symbol: '<img src="./assets/custom_laser_emoji.svg" alt="Laser" width="60" height="60" />',
     description: '<h3>Artist: Lib L</h3>' +
-      '<img src="./assets/actual-exhibit-images/libby.jpg" alt="Quantum Laser Installation" width="300" />\n\n' +
+      `<img src="${imageManifest.mains['libby.jpg']}" alt="Quantum Laser Installation" width="300" />\n\n` +
       '<p>Lib L blends the highly precise light of the laser and phosphorus paint to evoke the delicate processes of magneto-optical trapping, where light and magnetism work together to cool and confine atoms. As laser beams carve vivid, glowing patterns across reactive surfaces, the piece visualizes the invisible dance of atomic motion, capture, and control. The piece invites viewers to experience the strange beauty of quantum forces at work: particles frozen and guided by beams of pure energy.</p>' +
       '<h4>Artist Bio</h4>' +
       '<p>Lib L is a Glasgow based laser artist, visual artist and lighting designer and founder of Laser-Faire, her practice is rooted in skirting the edges of socially defined boundaries, and warping expectation and space. Manipulating and changing environments through light, and engaging with the interplay of different materials, both physical and ethereal. She works with forms oft considered salacious and perverse and highlighting the elegance she finds within them.</p>' +
@@ -114,7 +115,7 @@ const quantumSymbols: QuantumSymbol[] = [
     name: 'Connection',
     symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/clinking-beer-mugs_1f37b.png" alt="Clinking Beer Mugs" width="60" height="60" />',
     description: '<h3>Artist: Matthew Wasylko</h3>' +
-      '<img src="./assets/actual-exhibit-images/matty.jpg" alt="Connection Installation" width="300" />\n\n' +
+      `<img src="${imageManifest.mains['matty.jpg']}" alt="Connection Installation" width="300" />\n\n` +
       '<p><em>Two particles intertwined.</em><br>' +
       '<em>Born together.</em><br>' +
       '<em>Perfectly correlated.</em><br>' +
@@ -134,7 +135,7 @@ const quantumSymbols: QuantumSymbol[] = [
     name: 'Harvest Now, Decrypt Later',
     symbol: '<img src="https://em-content.zobj.net/source/microsoft/74/ear-of-maize_1f33d.png" alt="Corn" width="60" height="60" />',
     description: '<h3>Artist: Darren Robertson</h3>' +
-      '<img src="./assets/actual-exhibit-images/darren.jpg" alt="Harvest Now, Decrypt Later Game" width="300" />\n\n' +
+      `<img src="${imageManifest.mains['darren.jpg']}" alt="Harvest Now, Decrypt Later Game" width="300" />\n\n` +
       '<p>Are we ready for Q-Day?</p>' +
       '<p>There will come a day when quantum computers are powerful enough to break existing encryption methods. Much of the world\'s data and systems will be vulnerable to actors with access to this technology.</p>' +
       '<p>Cybersecurity experts recommend that we adapt to quantum-safe methods of cryptography to protect our data from this future threat. These methods already exist, however the vast majority of the world\'s data is not using it. There is on-going efforts to make the transition.</p>' +
@@ -153,7 +154,7 @@ const quantumSymbols: QuantumSymbol[] = [
     name: 'The Black Box',
     symbol: '<img src="https://em-content.zobj.net/source/microsoft/153/permanent-paper-sign_267e.png" alt="Infinity" width="60" height="60" />',
     description: '<h3>Artist: Ana (@lunattic_sounds)</h3>' +
-      '<img src="./assets/actual-exhibit-images/anna-box.jpg" alt="The Black Box Installation" width="300" />\n\n' +
+      `<img src="${imageManifest.mains['anna-box.jpg']}" alt="The Black Box Installation" width="300" />\n\n` +
       '<p>What does \'quantum\' mean to you?</p>' +
       '<p>This sound piece plays an infinite loop of voice notes responding to that question. Housed inside a literal black box, it reflects how the field of quantum physics is often seen: mysterious, sealed off and a little intimidating. And yet, somehow, we\'ve all heard the word.</p>' +
       '<p>From music and film to wellness and philosophy, the term has escaped its scientific roots. Its spread owes more to artists, writers and thinkers than to physicists.</p>' +
