@@ -34,9 +34,7 @@ function getAdaptiveCollisionRadius(): number {
 const VELOCITY_SCALE = 1;
 
 // Audio management variables
-let audioContext: AudioContext | null = null;
-let audioBuffer: AudioBuffer | null = null;
-let audioSource: AudioBufferSourceNode | null = null;
+let htmlAudio: HTMLAudioElement | null = null;
 let isMuted: boolean = true; // Start muted
 
 // Display an alert only if the user is on iOS Chrome or iOS Safari
@@ -390,30 +388,71 @@ function closeModal() {
 // Audio functions
 async function initializeAudio() {
   try {
-    console.log("Initializing audio...");
-    audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    console.log("AudioContext created, state:", audioContext.state);
+    console.log("Initializing HTML audio...");
     
-    console.log("Fetching audio file...");
-    const response = await fetch('./assets/fm_synth_quantum.wav');
-    if (!response.ok) {
-      throw new Error(`Failed to fetch audio: ${response.status} ${response.statusText}`);
+    // Create HTML audio element
+    htmlAudio = document.createElement('audio');
+    htmlAudio.loop = true;
+    htmlAudio.preload = 'auto';
+    htmlAudio.volume = 0.7; // Good default volume
+    
+    // Prevent it from showing in AirPlay if desired
+    htmlAudio.setAttribute('x-webkit-airplay', 'deny');
+    
+    // Try cloud storage URL first, fallback to local if needed
+    const audioUrls = [
+      'https://storage.googleapis.com/exhibition-pictures/audio/fm_synth_quantum.wav',
+      './assets/fm_synth_quantum.wav' // fallback to local
+    ];
+    
+    let audioLoaded = false;
+    
+    for (const url of audioUrls) {
+      try {
+        console.log(`Trying to load audio from: ${url}`);
+        htmlAudio.src = url;
+        
+        // Wait for the audio to load
+        await new Promise((resolve, reject) => {
+          const onLoad = () => {
+            console.log(`Successfully loaded audio from: ${url}`);
+            htmlAudio!.removeEventListener('canplaythrough', onLoad);
+            htmlAudio!.removeEventListener('error', onError);
+            audioLoaded = true;
+            resolve(url);
+          };
+          
+          const onError = (error: any) => {
+            console.warn(`Failed to load from ${url}:`, error);
+            htmlAudio!.removeEventListener('canplaythrough', onLoad);
+            htmlAudio!.removeEventListener('error', onError);
+            reject(error);
+          };
+          
+          htmlAudio!.addEventListener('canplaythrough', onLoad);
+          htmlAudio!.addEventListener('error', onError);
+        });
+        
+        if (audioLoaded) break;
+        
+      } catch (error) {
+        console.warn(`Failed to load from ${url}:`, error);
+      }
     }
     
-    const arrayBuffer = await response.arrayBuffer();
-    console.log("Audio file fetched, size:", arrayBuffer.byteLength, "bytes");
-    
-    try {
-      console.log(arrayBuffer)
-      audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-      console.log("Audio buffer created successfully");
-      updateMuteButtonState(); // Update button to show audio is available
-    } catch (decodeError) {
-      console.error("Failed to decode audio:", decodeError);
-      showAudioError();
+    if (!audioLoaded) {
+      throw new Error('All audio sources failed to load');
     }
+    
+    // Add to DOM (hidden)
+    htmlAudio.style.display = 'none';
+    document.body.appendChild(htmlAudio);
+    
+    console.log("HTML audio initialized successfully");
+    updateMuteButtonState(); // Update button to show audio is available
+    
   } catch (error) {
-    console.error("Failed to initialize audio:", error);
+    console.error("Failed to initialize HTML audio:", error);
     showAudioError();
   }
 }
@@ -441,54 +480,20 @@ function updateMuteButtonState() {
     muteButton.classList.remove('muted');
     muteButton.classList.add('playing');
   }
+  
+  // Add debug info for mobile troubleshooting
+  muteButton.title = `Audio ${isMuted ? 'muted' : 'playing'} - HTML Audio`;
 }
 
-function playAudio() {
-  if (!audioContext || !audioBuffer) {
-    console.error("AudioContext or buffer not initialized");
-    return;
-  }
-  
-  if (isMuted) {
-    console.log("Audio is muted, not playing");
-    return;
-  }
-  
-  console.log("Playing audio");
-  
-  // If already playing, stop the current source
-  if (audioSource) {
-    audioSource.stop();
-    audioSource = null;
-  }
-  
-  // Create a new source
-  audioSource = audioContext.createBufferSource();
-  audioSource.buffer = audioBuffer;
-  audioSource.connect(audioContext.destination);
-  
-  // Remove looping to prevent perceived infinite loop
-  // audioSource.loop = true; - This might be causing the issue
-  
-  // Add an onended handler instead of looping
-  audioSource.onended = () => {
-    console.log("Audio playback ended");
-    // Only restart if still unmuted
-    if (!isMuted) {
-      console.log("Restarting audio playback");
-      playAudio();
-    }
-  };
-  
-  audioSource.start();
-}
-
-function toggleMute() {
+async function toggleMute() {
   // Only proceed with toggle if we've completed initialization
-  if (!audioContext || !audioBuffer) {
+  if (!htmlAudio) {
     console.log("Audio not ready, initializing...");
-    initializeAudio(); // Try to initialize again
-    return;
+    await initializeAudio(); // Try to initialize again
+    if (!htmlAudio) {
+      console.error("Audio initialization failed");
+      return;
+    }
   }
   
   console.log("Toggle mute from:", isMuted, "to:", !isMuted);
@@ -496,21 +501,20 @@ function toggleMute() {
   updateMuteButtonState();
   
   if (isMuted) {
-    if (audioSource) {
-      console.log("Stopping audio");
-      audioSource.stop();
-      audioSource = null;
-    }
+    // Stop HTML Audio
+    console.log("Stopping HTML audio");
+    htmlAudio.pause();
+    htmlAudio.currentTime = 0; // Reset to beginning
   } else {
-    console.log("Attempting to play audio");
-    // Resume audio context if it was suspended (autoplay policy)
-    if (audioContext.state === 'suspended') {
-      audioContext.resume().then(() => {
-        console.log("AudioContext resumed");
-        playAudio();
-      });
-    } else {
-      playAudio();
+    console.log("Starting HTML audio");
+    
+    try {
+      // Play HTML audio - this should work on iOS even with silent mode
+      await htmlAudio.play();
+      console.log("HTML audio started successfully");
+    } catch (error) {
+      console.error("Failed to play HTML audio:", error);
+      showAudioError();
     }
   }
 }
@@ -564,6 +568,22 @@ function createAboutButton() {
   console.log("About button created");
 }
 
+function createGalleryButton() {
+  const galleryButton = document.createElement('button');
+  galleryButton.id = 'gallery-button';
+  galleryButton.className = 'gallery-button';
+  galleryButton.innerHTML = 'Gallery';
+  galleryButton.title = 'View image gallery';
+  
+  galleryButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    openGallery();
+  });
+  
+  document.body.appendChild(galleryButton);
+  console.log("Gallery button created");
+}
+
 // Event listeners
 if (closeButton) {
   closeButton.addEventListener('click', closeModal);
@@ -612,6 +632,221 @@ function teleportSymbol() {
   }, 500);
 }
 
+// Gallery functionality
+let galleryModal: HTMLDivElement;
+let imageFullscreen: HTMLDivElement;
+let currentImageIndex = 0;
+let galleryImages: string[] = [];
+let touchStartY = 0;
+let touchStartX = 0;
+
+function createGalleryModal() {
+  // Gallery modal
+  galleryModal = document.createElement('div');
+  galleryModal.id = 'gallery-modal';
+  galleryModal.className = 'gallery-modal';
+  
+  // Close button
+  const closeButton = document.createElement('button');
+  closeButton.className = 'gallery-close';
+  closeButton.innerHTML = '×';
+  closeButton.addEventListener('click', closeGallery);
+  
+  // Gallery grid
+  const galleryGrid = document.createElement('div');
+  galleryGrid.className = 'gallery-grid';
+  galleryGrid.id = 'gallery-grid';
+  
+  galleryModal.appendChild(closeButton);
+  galleryModal.appendChild(galleryGrid);
+  document.body.appendChild(galleryModal);
+  
+  // Image fullscreen modal
+  imageFullscreen = document.createElement('div');
+  imageFullscreen.id = 'image-fullscreen';
+  imageFullscreen.className = 'image-fullscreen';
+  
+  // Navigation buttons
+  const prevButton = document.createElement('button');
+  prevButton.className = 'image-nav prev';
+  prevButton.innerHTML = '‹';
+  prevButton.addEventListener('click', () => navigateImage(-1));
+  
+  const nextButton = document.createElement('button');
+  nextButton.className = 'image-nav next';
+  nextButton.innerHTML = '›';
+  nextButton.addEventListener('click', () => navigateImage(1));
+  
+  // Full-screen image
+  const fullscreenImage = document.createElement('img');
+  fullscreenImage.className = 'fullscreen-image';
+  fullscreenImage.id = 'fullscreen-image';
+  
+  // Swipe hint
+  const swipeHint = document.createElement('div');
+  swipeHint.className = 'swipe-hint';
+  swipeHint.innerHTML = 'Swipe down or press Escape to return<br>Swipe left/right to navigate';
+  
+  imageFullscreen.appendChild(prevButton);
+  imageFullscreen.appendChild(nextButton);
+  imageFullscreen.appendChild(fullscreenImage);
+  imageFullscreen.appendChild(swipeHint);
+  document.body.appendChild(imageFullscreen);
+  
+  // Add event listeners
+  setupGalleryEventListeners();
+}
+
+function openGallery() {
+  galleryModal.classList.add('active');
+  document.body.classList.add('gallery-open');
+  populateGallery();
+}
+
+function closeGallery() {
+  galleryModal.classList.remove('active');
+  document.body.classList.remove('gallery-open');
+  closeFullscreenImage();
+}
+
+function populateGallery() {
+  const galleryGrid = document.getElementById('gallery-grid') as HTMLDivElement;
+  galleryGrid.innerHTML = '';
+  
+  // Get all thumbnail images from manifest
+  const thumbnails = imageManifest.full_thumbs;
+  galleryImages = Object.keys(thumbnails);
+  
+  galleryImages.forEach((filename, index) => {
+    const img = document.createElement('img');
+    img.className = 'gallery-thumbnail';
+    img.src = (thumbnails as any)[filename];
+    img.alt = filename;
+    img.loading = 'lazy';
+    
+    img.addEventListener('click', () => {
+      openFullscreenImage(index);
+    });
+    
+    galleryGrid.appendChild(img);
+  });
+}
+
+function openFullscreenImage(index: number) {
+  currentImageIndex = index;
+  const filename = galleryImages[index];
+  const fullImageUrl = (imageManifest.full as any)[filename];
+  
+  const fullscreenImage = document.getElementById('fullscreen-image') as HTMLImageElement;
+  
+  // Show loading state
+  fullscreenImage.style.opacity = '0';
+  imageFullscreen.classList.add('active');
+  document.body.classList.add('fullscreen-open');
+  
+  // Load full image
+  const img = new Image();
+  img.onload = () => {
+    fullscreenImage.src = img.src;
+    fullscreenImage.style.opacity = '1';
+  };
+  img.src = fullImageUrl;
+  
+  // Preload adjacent images
+  preloadAdjacentImages(index);
+}
+
+function closeFullscreenImage() {
+  imageFullscreen.classList.remove('active');
+  document.body.classList.remove('fullscreen-open');
+}
+
+function navigateImage(direction: number) {
+  const newIndex = currentImageIndex + direction;
+  if (newIndex >= 0 && newIndex < galleryImages.length) {
+    openFullscreenImage(newIndex);
+  }
+}
+
+function preloadAdjacentImages(index: number) {
+  // Preload previous image
+  if (index > 0) {
+    const prevFilename = galleryImages[index - 1];
+    const prevImage = new Image();
+    prevImage.src = (imageManifest.full as any)[prevFilename];
+  }
+  
+  // Preload next image
+  if (index < galleryImages.length - 1) {
+    const nextFilename = galleryImages[index + 1];
+    const nextImage = new Image();
+    nextImage.src = (imageManifest.full as any)[nextFilename];
+  }
+}
+
+function setupGalleryEventListeners() {
+  // Keyboard navigation
+  document.addEventListener('keydown', (event) => {
+    if (imageFullscreen.classList.contains('active')) {
+      switch (event.key) {
+        case 'Escape':
+          closeFullscreenImage();
+          break;
+        case 'ArrowLeft':
+          navigateImage(-1);
+          break;
+        case 'ArrowRight':
+          navigateImage(1);
+          break;
+        case 'ArrowDown':
+          closeFullscreenImage();
+          break;
+      }
+    } else if (galleryModal.classList.contains('active') && event.key === 'Escape') {
+      closeGallery();
+    }
+  });
+  
+  // Touch/swipe navigation
+  imageFullscreen.addEventListener('touchstart', (event) => {
+    touchStartY = event.touches[0].clientY;
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+  
+  imageFullscreen.addEventListener('touchend', (event) => {
+    const touchEndY = event.changedTouches[0].clientY;
+    const touchEndX = event.changedTouches[0].clientX;
+    const deltaY = touchStartY - touchEndY;
+    const deltaX = touchStartX - touchEndX;
+    
+    // Swipe down to close (minimum 50px)
+    if (deltaY < -50 && Math.abs(deltaX) < Math.abs(deltaY)) {
+      closeFullscreenImage();
+    }
+    // Swipe left to go to next image (minimum 30px)
+    else if (deltaX > 30 && Math.abs(deltaY) < Math.abs(deltaX)) {
+      navigateImage(1);
+    }
+    // Swipe right to go to previous image (minimum 30px)
+    else if (deltaX < -30 && Math.abs(deltaY) < Math.abs(deltaX)) {
+      navigateImage(-1);
+    }
+  }, { passive: true });
+  
+  // Close gallery when clicking background
+  galleryModal.addEventListener('click', (event) => {
+    if (event.target === galleryModal) {
+      closeGallery();
+    }
+  });
+  
+  imageFullscreen.addEventListener('click', (event) => {
+    if (event.target === imageFullscreen) {
+      closeFullscreenImage();
+    }
+  });
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   // Verify DOM elements exist before continuing
@@ -624,6 +859,8 @@ document.addEventListener('DOMContentLoaded', () => {
   animateSymbols();
   createMuteButton(); // Add mute button
   createAboutButton(); // Add about button
+  createGalleryButton(); // Add gallery button
+  createGalleryModal(); // Create gallery modal
   initializeAudio();  // Initialize audio
   
   // Start teleportation timer
