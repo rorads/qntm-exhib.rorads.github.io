@@ -399,10 +399,9 @@ async function initializeAudio() {
     // Prevent it from showing in AirPlay if desired
     htmlAudio.setAttribute('x-webkit-airplay', 'deny');
     
-    // Try cloud storage URL first, fallback to local if needed
+    // Use cloud storage URL only
     const audioUrls = [
-      'https://storage.googleapis.com/exhibition-pictures/audio/fm_synth_quantum.wav',
-      './assets/fm_synth_quantum.wav' // fallback to local
+      'https://storage.googleapis.com/exhibition-pictures/audio/fm_synth_quantum.wav'
     ];
     
     let audioLoaded = false;
