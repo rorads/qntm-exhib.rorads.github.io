@@ -747,6 +747,15 @@ function setupGalleryEventListeners() {
         }
     });
 }
+// Preload main images used in modal descriptions
+function preloadModalImages() {
+    const mainImages = Object.values(imageManifest.mains);
+    mainImages.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+    console.log(`Preloading ${mainImages.length} main images`);
+}
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
     // Verify DOM elements exist before continuing
@@ -761,6 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createGalleryButton(); // Add gallery button
     createGalleryModal(); // Create gallery modal
     initializeAudio(); // Initialize audio
+    preloadModalImages(); // Preload main images for faster modal loading
     // Start teleportation timer
     function scheduleNextTeleport() {
         const delay = Math.random() * 10000 + 10000; // Random delay between 10-20 seconds
